@@ -39,4 +39,9 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
     Route::resource('permissions', 'PermissionController');
     Route::resource('roles', 'RoleController');
+    Route::resource('hotel', 'HotelController');
+    Route::resource('about', 'AboutController');
+    Route::resource('transport', 'TransportController');
+    Route::resource('paket', 'PaketController');
+    Route::resource('brosur', 'BrosurController');
 });

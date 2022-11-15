@@ -5,6 +5,36 @@
             <span class="nav-link-text">Dashboard</span>
         </a>
     </li>
+    <li>
+        <a href="{{route('hotel.index')}}" title="Hotel" data-filter-tags="hotel">
+            <i class="fal fa-building"></i>
+            <span class="nav-link-text">Hotel</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('about.index')}}" title="About" data-filter-tags="about">
+            <i class="fal fa-home"></i>
+            <span class="nav-link-text">About</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('transport.index')}}" title="Transportasi" data-filter-tags="tranpsortasi">
+            <i class="fal fa-plane"></i>
+            <span class="nav-link-text">Transportasi</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('paket.index')}}" title="Daftar Paket" data-filter-tags="paket">
+            <i class="fal fa-box"></i>
+            <span class="nav-link-text">Daftar Paket Keberangkatan</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('brosur.index')}}" title="Brosur" data-filter-tags="brosur">
+            <i class="fal fa-file-image"></i>
+            <span class="nav-link-text">Brosur</span>
+        </a>
+    </li>
     @isset($menu)
     @foreach ($menu as $parent_menu)
     <li class="">
