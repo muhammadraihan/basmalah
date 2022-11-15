@@ -44,4 +44,5 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function () {
     Route::resource('transport', 'TransportController');
     Route::resource('paket', 'PaketController');
     Route::resource('brosur', 'BrosurController');
+    Route::resource('home', 'HomeController');
 });

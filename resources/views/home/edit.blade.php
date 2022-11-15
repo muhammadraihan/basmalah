@@ -1,10 +1,9 @@
 @extends('layouts.page')
 
-@section('title', 'Transportasi Create')
+@section('title', 'Home Edit')
 
 @section('css')
 <link rel="stylesheet" media="screen, print" href="{{asset('css/formplugins/select2/select2.bundle.css')}}">
-<link rel="stylesheet" media="screen, print" href="{{asset('css/formplugins/dropzone/dropzone.css')}}">
 @endsection
 
 @section('content')
@@ -12,9 +11,9 @@
     <div class="col-xl-6">
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
-                <h2>Add New <span class="fw-300"><i>Transportasi </i></span></h2>
+            <h2>Edit <span class="fw-300"><i>Home</i></span></h2>
                 <div class="panel-toolbar">
-                    <a class="nav-link active" href="{{route('transport.index')}}"><i class="fal fa-arrow-alt-left">
+                    <a class="nav-link active" href="{{route('home.index')}}"><i class="fal fa-arrow-alt-left">
                         </i>
                         <span class="nav-link-text">Back</span>
                     </a>
@@ -27,17 +26,16 @@
                     <div class="panel-tag">
                         Form with <code>*</code> can not be empty.
                     </div>
-                    {!! Form::open(['route' => 'transport.store','id'=>'forms','method' => 'POST','class' =>
-                    'needs-validation','dropzone', 'forms','novalidate','enctype' => 'multipart/form-data']) !!}
-                    <div class="form-group col-md-4 mb-3">
-                        {{ Form::label('name','Nama Transportasi',['class' => 'required form-label'])}}
-                        {{ Form::text('name',null,['placeholder' => 'Nama Transportasi','class' => 'form-control '.($errors->has('name') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
-                        @if ($errors->has('name'))
-                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
-                        @endif
-                    </div>
+                    {!! Form::open(['route' => ['home.update',$home->uuid],'method' => 'PUT','class' =>
+                    'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('photo','Photo',['class' => 'required form-label'])}}
+                        <input type="hidden" name="oldImage" value="{{ $home->photo }}"> 
+                        @if ($home->photo)
+                            <img src="{{ asset('photo/' . $home->photo) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                        @else
+                            <img class="img-preview img-fluid mb-5 col-sm-5">
+                        @endif
                         {{ Form::file('photo',null,['placeholder' => 'Photo','class' => 'form-control upload '.($errors->has('photo') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'photo'])}}
                         <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                         alt="preview image" style="max-height: 250px;">
@@ -58,9 +56,10 @@
 
 @section('js')
 <script src="{{asset('js/formplugins/select2/select2.bundle.js')}}"></script>
-<script src="{{asset('js/formplugins/dropzone/dropzone.js')}}"></script>
 <script>
     $(document).ready(function(){
+        $('.select2').select2();
+
         $('#photo').change(function(){
             
             let reader = new FileReader();
@@ -73,6 +72,35 @@
             reader.readAsDataURL(this.files[0]); 
            
            });
+        
+        // Generate a password string
+        function randString(){
+            var chars = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNP123456789";
+            var string_length = 8;
+            var randomstring = '';
+            for (var i = 0; i < string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                randomstring += chars.substring(rnum, rnum + 1);
+            }
+            return randomstring;
+        }
+        
+        // Create a new password
+        $(".getNewPass").click(function(){
+            var field = $('#password').closest('div').find('input[name="password"]');
+            field.val(randString(field));
+        });
+
+        //Enable input and button change password
+        $('#enablePassChange').click(function() {
+            if ($(this).is(':checked')) {
+                $('#passwordForm').attr('disabled',false); //enable input
+                $('#getNewPass').attr('disabled',false); //enable button
+            } else {
+                    $('#passwordForm').attr('disabled', true); //disable input
+                    $('#getNewPass').attr('disabled', true); //disable button
+            }
+        });
     });
 </script>
 @endsection

@@ -29,6 +29,10 @@ class TransportController extends Controller
 
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->editColumn('photo', function ($row){
+                    $url = asset('photo');
+                    return '<image style="width: 150px; height: 150px;"  src="'.$url.'/'.$row->photo.'" alt="">';
+                })
                 ->addColumn('action', function ($row) {
                     return '
                             <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('about.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
@@ -75,6 +79,13 @@ class TransportController extends Controller
 
         $transport = new Transport();
         $transport->name = $request->name;
+        $transport->photo = $request->photo;
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'photo/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $transport->photo = "$profileImage";
+        }
         $transport->save();
 
         toastr()->success('New Transportation Added', 'Success');
@@ -127,6 +138,23 @@ class TransportController extends Controller
 
         $transport = Transport::uuid($id);
         $transport->name = $request->name;
+        if($request->hasFile('photo')){
+
+            // user intends to replace the current image for the category.  
+            // delete existing (if set)
+        
+            if($oldImage = $transport->photo) {
+        
+                unlink(public_path('photo/') . $oldImage);
+            }
+        
+            // save the new image
+            $image = $request->file('photo');
+            $destinationPath = 'photo/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $transport->photo = "$profileImage";
+        }
         $transport->save();
 
         toastr()->success('Transportation Edited', 'Success');
@@ -142,6 +170,10 @@ class TransportController extends Controller
     public function destroy($id)
     {
         $transport = Transport::uuid($id);
+        $file = public_path('photo/').$transport->photo;
+        if(file_exists($file)){
+            unlink($file);
+        }
         $transport->delete();
 
         toastr()->success('Transportation Deleted', 'Success');

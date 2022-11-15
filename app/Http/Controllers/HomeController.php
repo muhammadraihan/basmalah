@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Brosur;
+use App\Models\Home;
 
 use Auth;
 use DataTables;
@@ -14,7 +14,7 @@ use Image;
 use Response;
 use URL;
 
-class BrosurController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +23,9 @@ class BrosurController extends Controller
      */
     public function index()
     {
-        $brosur = Brosur::all();
+        $home = Home::all();
         if (request()->ajax()) {
-            $data = Brosur::get();
+            $data = Home::get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -35,8 +35,8 @@ class BrosurController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     return '
-                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('brosur.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
-                            <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('brosur.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>';
+                            <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('home.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm btn-icon waves-effect waves-themed delete-btn" data-url="' . URL::route('home.destroy', $row->uuid) . '" data-id="' . $row->uuid . '" data-token="' . csrf_token() . '" data-toggle="modal" data-target="#modal-delete"><i class="fal fa-trash-alt"></i></a>';
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
@@ -44,7 +44,7 @@ class BrosurController extends Controller
                 ->make(true);
         }
 
-        return view('brosur.index');
+        return view('home.index');
     }
 
     /**
@@ -54,7 +54,7 @@ class BrosurController extends Controller
      */
     public function create()
     {
-        return view('brosur.create');
+        return view('home.create');
     }
 
     /**
@@ -66,9 +66,7 @@ class BrosurController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
-            'keterangan' => 'required',
-            'photo' => 'required',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
 
         $messages = [
@@ -79,21 +77,19 @@ class BrosurController extends Controller
         $this->validate($request, $rules, $messages);
         // dd($request->photo);
 
-        $brosur = new Brosur();
-        $brosur->name = $request->name;
-        $brosur->keterangan = $request->keterangan;
-        $brosur->photo = $request->photo;
+        $home = new Home();
+        $home->photo = $request->photo;
 
         if ($image = $request->file('photo')) {
             $destinationPath = 'photo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $brosur->photo = "$profileImage";
+            $home->photo = "$profileImage";
         }
-        $brosur->save();
+        $home->save();
 
-        toastr()->success('New Brosur Added', 'Success');
-        return redirect()->route('brosur.index');
+        toastr()->success('New Home Added', 'Success');
+        return redirect()->route('home.index');
     }
 
     /**
@@ -115,8 +111,8 @@ class BrosurController extends Controller
      */
     public function edit($id)
     {
-        $brosur = Brosur::uuid($id);
-        return view('brosur.edit', compact('brosur'));
+        $home = Home::uuid($id);
+        return view('home.edit',compact('home'));
     }
 
     /**
@@ -129,8 +125,6 @@ class BrosurController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'name' => 'required',
-            'keterangan' => 'required',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
 
@@ -142,21 +136,28 @@ class BrosurController extends Controller
         $this->validate($request, $rules, $messages);
         // dd($request->photo);
 
-        $brosur = Brosur::uuid($id);
-        $brosur->name = $request->name;
-        $brosur->keterangan = $request->keterangan;
-        $brosur->photo = $request->photo;
+        $home = Home::uuid($id);
+        if($request->hasFile('photo')){
 
-        if ($image = $request->file('photo')) {
+            // user intends to replace the current image for the category.  
+            // delete existing (if set)
+        
+            if($oldImage = $home->photo) {
+        
+                unlink(public_path('photo/') . $oldImage);
+            }
+        
+            // save the new image
+            $image = $request->file('photo');
             $destinationPath = 'photo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $brosur->photo = "$profileImage";
+            $home->photo = "$profileImage";
         }
-        $brosur->save();
+        $home->save();
 
-        toastr()->success('Brosur Edited', 'Success');
-        return redirect()->route('brosur.index');
+        toastr()->success('Home Edited', 'Success');
+        return redirect()->route('home.index');
     }
 
     /**
@@ -167,14 +168,14 @@ class BrosurController extends Controller
      */
     public function destroy($id)
     {
-        $brosur = Brosur::uuid($id);
-        $file = public_path('photo/').$brosur->photo;
+        $home = Home::uuid($id);
+        $file = public_path('photo/').$home->photo;
         if(file_exists($file)){
             unlink($file);
         }
-        $brosur->delete();
+        $home->delete();
 
-        toastr()->success('Brosur Deleted', 'Success');
-        return view('brosur.index');
+        toastr()->success('Home Deleted', 'Success');
+        return view('home.index');
     }
 }

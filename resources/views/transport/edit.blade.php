@@ -35,6 +35,21 @@
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                         @endif
                     </div>
+                    <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('photo','Photo',['class' => 'required form-label'])}}
+                        <input type="hidden" name="oldImage" value="{{ $transport->photo }}"> 
+                        @if ($transport->photo)
+                            <img src="{{ asset('photo/' . $transport->photo) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                        @else
+                            <img class="img-preview img-fluid mb-5 col-sm-5">
+                        @endif
+                        {{ Form::file('photo',null,['placeholder' => 'Photo','class' => 'form-control upload '.($errors->has('photo') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'photo'])}}
+                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                        alt="preview image" style="max-height: 250px;">
+                        @if ($errors->has('photo'))
+                        <div class="invalid-feedback">{{ $errors->first('photo') }}</div>
+                        @endif
+                    </div>
                 <div
                     class="panel-content border-faded border-left-0 border-right-0 border-bottom-0 d-flex flex-row align-items-center">
                     <button class="btn btn-primary ml-auto" type="submit">Submit</button>

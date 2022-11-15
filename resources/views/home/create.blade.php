@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', 'Transportasi Create')
+@section('title', 'Home Create')
 
 @section('css')
 <link rel="stylesheet" media="screen, print" href="{{asset('css/formplugins/select2/select2.bundle.css')}}">
@@ -12,9 +12,9 @@
     <div class="col-xl-6">
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
-                <h2>Add New <span class="fw-300"><i>Transportasi </i></span></h2>
+                <h2>Add New <span class="fw-300"><i>Home </i></span></h2>
                 <div class="panel-toolbar">
-                    <a class="nav-link active" href="{{route('transport.index')}}"><i class="fal fa-arrow-alt-left">
+                    <a class="nav-link active" href="{{route('home.index')}}"><i class="fal fa-arrow-alt-left">
                         </i>
                         <span class="nav-link-text">Back</span>
                     </a>
@@ -27,15 +27,8 @@
                     <div class="panel-tag">
                         Form with <code>*</code> can not be empty.
                     </div>
-                    {!! Form::open(['route' => 'transport.store','id'=>'forms','method' => 'POST','class' =>
+                    {!! Form::open(['route' => 'home.store','id'=>'forms','method' => 'POST','class' =>
                     'needs-validation','dropzone', 'forms','novalidate','enctype' => 'multipart/form-data']) !!}
-                    <div class="form-group col-md-4 mb-3">
-                        {{ Form::label('name','Nama Transportasi',['class' => 'required form-label'])}}
-                        {{ Form::text('name',null,['placeholder' => 'Nama Transportasi','class' => 'form-control '.($errors->has('name') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
-                        @if ($errors->has('name'))
-                        <div class="invalid-feedback">{{ $errors->first('name') }}</div>
-                        @endif
-                    </div>
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('photo','Photo',['class' => 'required form-label'])}}
                         {{ Form::file('photo',null,['placeholder' => 'Photo','class' => 'form-control upload '.($errors->has('photo') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'photo'])}}

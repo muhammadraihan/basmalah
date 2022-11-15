@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', 'Transportasi Management')
+@section('title', 'Home Management')
 
 @section('css')
 <link rel="stylesheet" media="screen, print" href="{{asset('css/datagrid/datatables/datatables.bundle.css')}}">
@@ -9,9 +9,9 @@
 @section('content')
 <div class="subheader">
     <h1 class="subheader-title">
-        <i class='subheader-icon fal fa-users'></i> Module: <span class='fw-300'>Transportasi </span>
+        <i class='subheader-icon fal fa-users'></i> Module: <span class='fw-300'>Home </span>
         <small>
-            Module for manage Transportasi.
+            Module for manage Home.
         </small>
     </h1>
 </div>
@@ -20,10 +20,10 @@
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
             <h2>
-                    Transportasi  <span class="fw-300"><i>List</i></span>
+                    Home  <span class="fw-300"><i>List</i></span>
                 </h2>
                 <div class="panel-toolbar">
-                    <a class="nav-link active" href="{{route('transport.create')}}"><i class="fal fa-plus-circle">
+                    <a class="nav-link active" href="{{route('home.create')}}"><i class="fal fa-plus-circle">
                         </i>
                         <span class="nav-link-text">Add New</span>
                     </a>
@@ -38,8 +38,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama</th>
-                <th>Logo Maskkapai</th>
+                <th>Photo</th>
                 <th width="120px">Action</th>
                 </tr>
                         </thead>
@@ -96,7 +95,7 @@
             "responsive": true,
             "order": [[ 0, "asc" ]],
             "ajax":{
-                url:'{{route('transport.index')}}',
+                url:'{{route('home.index')}}',
                 type : "GET",
                 dataType: 'json',
                 error: function(data){
@@ -105,7 +104,6 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
             {data: 'photo', name: 'photo'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

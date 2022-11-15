@@ -6,6 +6,12 @@
         </a>
     </li>
     <li>
+        <a href="{{route('home.index')}}" title="Home" data-filter-tags="home">
+            <i class="fal fa-home"></i>
+            <span class="nav-link-text">Home</span>
+        </a>
+    </li>
+    <li>
         <a href="{{route('hotel.index')}}" title="Hotel" data-filter-tags="hotel">
             <i class="fal fa-building"></i>
             <span class="nav-link-text">Hotel</span>
