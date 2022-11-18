@@ -41,6 +41,12 @@
             <span class="nav-link-text">Brosur</span>
         </a>
     </li>
+    <li>
+        <a href="{{route('youtube.index')}}" title="Youtube" data-filter-tags="youtube">
+            <i class="fal fa-caret-circle-right"></i>
+            <span class="nav-link-text">Link Youtube</span>
+        </a>
+    </li>
     @isset($menu)
     @foreach ($menu as $parent_menu)
     <li class="">
