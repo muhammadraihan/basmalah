@@ -16,7 +16,7 @@ class CreateAboutsTable extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
-            $table->string('keterangan')->nullable();
+            $table->longText('keterangan')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });
