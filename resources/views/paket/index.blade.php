@@ -41,11 +41,13 @@
                 <th>Jenis Paket</th>
                 <th>Nama</th>
                 <th>Tanggal Keberangkatan</th>
+                <th>Jumlah Hari</th>
                 <th>Include</th>
                 <th>Exclude</th>
                 <th>Harga</th>
                 <th>Transportasi</th>
                 <th>Hotel</th>
+                <th>Photo</th>
                 <th>Status</th>
                 <th width="120px">Action</th>
                 </tr>
@@ -115,11 +117,13 @@
             {data: 'jenis_paket', nama: 'jenis_paket'},
             {data: 'nama', name: 'nama'},
             {data: 'tanggal', name: 'tanggal'},
+            {data: 'hari', name: 'hari'},
             {data: 'include', name: 'name'},
             {data: 'exclude', name: 'exclude'},
             {data: 'harga', name: 'harga'},
             {data: 'transportasi', name: 'transportasi'},
             {data: 'hotel', name: 'hotel'},
+            {data: 'photo', name: 'photo'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

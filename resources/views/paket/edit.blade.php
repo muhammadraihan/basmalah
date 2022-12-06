@@ -56,6 +56,13 @@
                         @endif
                     </div>  
                     <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('hari','Jumlah Hari',['class' => 'required form-label'])}}
+                        {{ Form::text('hari',$paket->hari,['placeholder' => 'Jumlah Hari','class' => 'form-control '.($errors->has('hari') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        @if ($errors->has('hari'))
+                        <div class="invalid-feedback">{{ $errors->first('hari') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-4 mb-3">
                         {{ Form::label('include','Include',['class' => 'required form-label'])}}
                         {{ Form::textarea('include',$paket->include,['placeholder' => 'Include','class' => 'form-control '.($errors->has('include') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('include'))
@@ -101,6 +108,21 @@
                         <div class="help-block text-danger">{{ $errors->first('hotel') }}</div>
                         @endif
                     </div> 
+                    <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('photo','Photo',['class' => 'required form-label'])}}
+                        <input type="hidden" name="oldImage" value="{{ $paket->photo }}"> 
+                        @if ($paket->photo)
+                            <img src="{{ asset('photo/' . $paket->photo) }}" class="img-preview img-fluid mb-10 col-sm-10 d-block">
+                        @else
+                            <img class="img-preview img-fluid mb-5 col-sm-5">
+                        @endif
+                        {{ Form::file('photo',null,['placeholder' => 'Photo','class' => 'form-control upload '.($errors->has('photo') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'photo'])}}
+                        <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
+                        alt="preview image" style="max-height: 250px;">
+                        @if ($errors->has('photo'))
+                        <div class="invalid-feedback">{{ $errors->first('photo') }}</div>
+                        @endif
+                    </div>
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('status','Status Paket',['class' => 'required form-label'])}}
                         {!! Form::select('status', array('0' => 'Tersedia', '1' => 'Full Booked'), $paket->status,

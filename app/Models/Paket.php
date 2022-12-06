@@ -12,7 +12,7 @@ class Paket extends Model
     use Uuid;
 
     protected $fillable = [
-        'jenis_paket', 'nama', 'include', 'exclude', 'harga', 'transportasi', 'hotel', 'status', 'tanggal',
+        'jenis_paket', 'nama', 'include', 'exclude', 'harga', 'transportasi', 'hotel', 'status', 'tanggal', 'photo', 'hari'
     ];
 
     public function Transport(){

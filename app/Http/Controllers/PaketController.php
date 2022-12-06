@@ -47,6 +47,10 @@ class PaketController extends Controller
                     }
                     return Carbon::parse($row->tanggal)->translatedFormat('d M Y');
                 })
+                ->editColumn('photo', function ($row){
+                    $url = asset('photo');
+                    return '<image style="width: 150px; height: 150px;"  src="'.$url.'/'.$row->photo.'" alt="">';
+                })
                 ->editColumn('status', function($row){
                     switch ($row->status) {
                         case '0' :
@@ -64,7 +68,7 @@ class PaketController extends Controller
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
-                ->rawColumns(['action','status'])
+                ->rawColumns(['action','status', 'photo'])
                 ->make(true);
         }
 
@@ -100,6 +104,8 @@ class PaketController extends Controller
             'transportasi' => 'required',
             'hotel' => 'required',
             'tanggal' => 'required',
+            'hari' => 'required',
+            'photo' => 'required'
         ];
 
         $messages = [
@@ -124,7 +130,16 @@ class PaketController extends Controller
         $paket->transportasi = $request->transportasi;
         $paket->hotel = $request->hotel;
         $paket->tanggal = $request->tanggal;
+        $paket->hari = $request->hari;
+        $paket->photo = $request->photo;
         $paket->status = 0;
+
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'photo/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $paket->photo = "$profileImage";
+        }
         $paket->save();
 
         toastr()->success('New Paket Added', 'Success');
@@ -174,6 +189,8 @@ class PaketController extends Controller
             'transportasi' => 'required',
             'hotel' => 'required',
             'tanggal' => 'required',
+            'hari' => 'required',
+            'photo' => 'required'
         ];
 
         $messages = [
@@ -198,7 +215,16 @@ class PaketController extends Controller
         $paket->transportasi = $request->transportasi;
         $paket->hotel = $request->hotel;
         $paket->tanggal = $request->tanggal;
+        $paket->hari = $request->hari;
         $paket->status = $request->status;
+        $paket->photo = $request->photo;
+
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'photo/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $paket->photo = "$profileImage";
+        }
         $paket->save();
 
         toastr()->success('Paket Edited', 'Success');
@@ -214,6 +240,10 @@ class PaketController extends Controller
     public function destroy($id)
     {
         $paket = Paket::uuid($id);
+        $file = public_path('photo/').$paket->photo;
+        if(file_exists($file)){
+            unlink($file);
+        }
         $paket->delete();
 
         toastr()->success('Paket Deleted', 'Success');
