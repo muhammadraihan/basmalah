@@ -1,5 +1,5 @@
 <!-- Topbar Start -->
-<div class="container-fluid bg-dark px-0">
+{{-- <div class="container-fluid bg-dark px-0">
     <div class="row g-0 d-none d-lg-flex">
         <div class="col-lg-6 ps-5 text-start">
             <div class="h-100 d-inline-flex align-items-center text-white">
@@ -17,24 +17,24 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Topbar End -->
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-2 pe-5">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top py-2 pe-5 bg-basmalah" style="background: url('img/elements_header_background.png'),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;">
     <a href="index.html" class="navbar-brand ps-5 me-0">
-        <img src="img/logo/Master Logo Vector-6.png" alt="Logo" height="48">
+        <img src="img/logo/Master Logo Vector-8.png" alt="Logo" height="48">
     </a>
     <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Beranda</a>
-            <a href="about.html" class="nav-item nav-link">Tentang Kami</a>
-            <a href="paket-umrah.html" class="nav-item nav-link">Paket Umrah</a>
-            <a href="paket-halal-tour.html" class="nav-item nav-link">Paket Halal Tour</a>
+            <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : ''}}">Beranda</a>
+            <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : ''}}">Tentang Kami</a>
+            <a href="{{ route('umrah') }}" class="nav-item nav-link {{ request()->is('umrah') ? 'active' : ''}}">Paket Umrah</a>
+            <a href="{{ route('haji') }}" class="nav-item nav-link {{ request()->is('haji') ? 'active' : ''}}">Paket Haji</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Layanan</a>
                 <div class="dropdown-menu bg-light m-0">

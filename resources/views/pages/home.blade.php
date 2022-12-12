@@ -9,38 +9,15 @@
 <div class="container-fluid px-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="w-100" src="img/hero/hero-1.jpeg" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10 text-start">
-                                <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">Paket
-                                    Tur Umrah Untuk Keluarga</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">Bahagia Sukses Mulia
-                                    Bersama Allah</h1>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Lihat detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @forelse ($home as $key => $item)
+            <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                <img class="w-100" src="{{asset('photo/' . $item->photo)}}" alt="Image">
             </div>
-            <div class="carousel-item">
-                <img class="w-100" src="img/hero/hero-2.avif" alt="Image">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-10 text-start">
-                                <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">Paket
-                                    Tur Sampai Ke Turki</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">Cukup Rp10juta Sudah
-                                    Bisa Beribadah</h1>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Lihat Detail</a>
-                            </div>
-                        </div>
-                    </div>
+            @empty
+                <div class="col-12">
+                    Empty
                 </div>
-            </div>
+            @endforelse
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -117,121 +94,42 @@
             <h1 class="display-5 mb-4">Pilihan Paket Umrah Untuk Kamu</h1>
         </div>
         <div class="row gy-5 gx-4">
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+            @php
+             $incrementNumber = 0
+            @endphp
+            @forelse ($paket as $item)
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                 <div class="service-item">
-                    <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
+                    <img class="img-fluid" src="{{ asset('photo/' . $item->photo) }}" alt="">
                     <div class="service-img">
-                        <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
+                        <img class="img-fluid" src="{{ asset('photo/' . $item->photo) }}" alt="">
                     </div>
                     <div class="service-detail">
                         <div class="service-title">
-                            <p class="mb-0 text-primary">Paket Umrah <span class="badge bg-info">12hari</span></p>
-                            <hr class="w-25">
-                            <h3 class="mb-2">Berkah</h3>
-                            <p class="mb-0 text-secondary">Mulai dari Rp 30juta</p>
-                            <hr class="w-25">
-                        </div>
-                        <div class="service-text">
-                            <p class="text-white mb-0">Madinah | Harga Sudah Termasuk Perlengkapan</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-light" href="">Beli Paket</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                    <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
-                    <div class="service-img">
-                        <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
-                    </div>
-                    <div class="service-detail">
-                        <div class="service-title">
-                            <p class="mb-0 text-primary">Paket Halal Tour <span class="badge bg-info">12hari</span>
+                            <p class="mb-0 text-primary text-uppercase">{{$item->jenis_paket}}
+                                <span class="badge bg-info">{{$item->hari}} hari</span>
                             </p>
                             <hr class="w-25">
-                            <h3 class="mb-2">Turkey Tour</h3>
-                            <p class="mb-0 text-secondary">Mulai dari Rp 17,8juta</p>
+                            <h3 class="mb-2">{{$item->nama}}</h3>
+                            <p class="mb-0 text-secondary">{{"Rp " . number_format($item->harga, 0, ",", ".")}}</p>
                             <hr class="w-25">
                         </div>
                         <div class="service-text">
-                            <p class="text-white mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                                lorem sed diam stet diam sed stet.</p>
+                            <p class="text-white mb-0">{{$item->include}}</p>
                         </div>
                     </div>
-                    <a class="btn btn-light" href="">Read More</a>
+                    <a class="btn btn-basmalah" href="">Baca detil</a>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item">
-                    <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
-                    <div class="service-img">
-                        <img class="img-fluid" src="img/paket/madinah.jpeg" alt="">
-                    </div>
-                    <div class="service-detail">
-                        <div class="service-title">
-                            <p class="mb-0 text-primary">Paket Napak Tilas <span class="badge bg-info">2
-                                    negara</span></p>
-                            <hr class="w-25">
-                            <h3 class="mb-2">Bumi Para Nabi</h3>
-                            <p class="mb-0 text-secondary">Mulai dari USD 2750</p>
-                            <hr class="w-25">
-                        </div>
-                        <div class="service-text">
-                            <p class="text-white mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos
-                                lorem sed diam stet diam sed stet.</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-light" href="">Read More</a>
+            @empty
+                <div class="col-12">
+                    Empty
                 </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </div>
 <!-- Service End -->
-
-<div class="container">
-
-    <!--Product Grid-->
-    <div id="div1">
-        <section class="section-paket2">
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="prod-grid"><img src="img/paket/madinah.jpeg" alt="Madinah">
-                        <div class="my-2 title-paket">Paket Umrah
-                            <span class="badge bg-info">12hari</span></div>
-                        <h3 class="nama-paket">Berkah</h3>
-                        <div class="price-paket">Mulai <span>Rp 30juta</span></div>
-                        <p class="short-desc">Tour Madinah, Harga sudah termasuk perlengkapan</p>
-                        <button class="btn w-100 btn-test">Beli Paket <i class="fa fa-shopping-cart"
-                                aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="prod-grid"><img src="img/paket/madinah.jpeg" alt="Madinah">
-                        <div class="my-2 title-paket">Paket Umrah
-                            <span class="badge bg-info">12hari</span></div>
-                        <h3 class="nama-paket">Berkah</h3>
-                        <div class="price-paket">Mulai <span>Rp 30juta</span></div>
-                        <p class="short-desc">Tour Madinah, Harga sudah termasuk perlengkapan</p>
-                        <button class="btn w-100 btn-test">Beli Paket <i class="fa fa-shopping-cart"
-                                aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="prod-grid"><img src="img/paket/madinah.jpeg" alt="Madinah">
-                        <div class="my-2 title-paket">Paket Umrah
-                            <span class="badge bg-info">12hari</span></div>
-                        <h3 class="nama-paket">Berkah</h3>
-                        <div class="price-paket">Mulai <span>Rp 30juta</span></div>
-                        <p class="short-desc">Tour Madinah, Harga sudah termasuk perlengkapan</p>
-                        <button class="btn w-100 btn-test">Beli Paket <i class="fa fa-shopping-cart"
-                                aria-hidden="true"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
 
 <!-- Project Start -->
 <div class="container-fluid py-4 my-5 px-0  bg-dark">
@@ -244,30 +142,20 @@
 <section class="akomodasi-section">
     <div class="container my-4">
         <div class="row">
+            @forelse ($hotel as $item)
             <div class="col-12 col-md-3">
                 <div class="img-grid">
-                    <img src="img/akomodasi/3-istanbul.jpeg" alt="hotel">
-                    <div class="my-4 title-hotel">Hotel Istanbul</div>
+                    <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel">
+                    <div class="my-4 title-hotel">{{$item->name}}</div>
+                    <div class="my-2">{{$item->grade}}</div>
+                    <div class="my-3">{{$item->location}}</div>
                 </div>
             </div>
-            <div class="col-12 col-md-3">
-                <div class="img-grid">
-                    <img src="img/akomodasi/3-istanbul.jpeg" alt="hotel">
-                    <div class="my-4 title-hotel">Hotel Istanbul</div>
+            @empty
+                <div class="col-12">
+                    Empty
                 </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="img-grid">
-                    <img src="img/akomodasi/3-istanbul.jpeg" alt="hotel">
-                    <div class="my-4 title-hotel">Hotel Istanbul</div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="img-grid">
-                    <img src="img/akomodasi/3-istanbul.jpeg" alt="hotel">
-                    <div class="my-4 title-hotel">Hotel Istanbul</div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -284,21 +172,15 @@
 <section class="transportasi-section">
     <div class="container my-4">
         <div class="owl-carousel transport-carousel">
+            @forelse ($transport as $item)
             <div class="item">
-                <img src="img/transport/Picture1.png/Picture1.png-1.png" alt="Image">
+                <img src="{{asset('photo/' . $item->photo)}}" alt="Image">
             </div>
-            <div class="item">
-                <img src="img/transport/Picture1.png/Picture1.png-2.png" alt="Image">
-            </div>
-            <div class="item">
-                <img src="img/transport/Picture1.png/Picture1.png-3.png" alt="Image">
-            </div>
-            <div class="item">
-                <img src="img/transport/Picture1.png/Picture1.png/Picture1.png-1.png" alt="Image">
-            </div>
-            <div class="item">
-                <img src="img/transport/Picture1.png/Picture1.png/Picture1.png-2.png" alt="Image">
-            </div>
+            @empty
+                <div class="col-12">
+                    Empty
+                </div>
+            @endforelse
         </div>
     </div>
 </section>
