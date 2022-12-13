@@ -37,7 +37,10 @@
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('grade','Bintang',['class' => 'required form-label'])}}
-                        {{ Form::textarea('grade',$hotel->grade,['placeholder' => 'Bintang','class' => 'form-control '.($errors->has('grade') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {!! Form::select('grade', array('3' => '3', '4' => '4', '5' => '5'), $hotel->grade,
+                        ['id'=>'grade','class'
+                        => 'custom-select select2'.($errors->has('grade') ? 'is-invalid':'') ,'required'
+                        => '', 'placeholder' => 'Pilih Bintang Hotel ...'])!!}
                         @if ($errors->has('grade'))
                         <div class="invalid-feedback">{{ $errors->first('grade') }}</div>
                         @endif
