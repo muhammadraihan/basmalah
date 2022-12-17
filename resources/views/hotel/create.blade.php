@@ -40,7 +40,7 @@
                         {{ Form::label('grade','Bintang',['class' => 'required form-label'])}}
                         {!! Form::select('grade', array('3' => '3', '4' => '4', '5' => '5'), '',
                         ['id'=>'grade','class'
-                        => 'custom-select'.($errors->has('grade') ? 'is-invalid':'') ,'required'
+                        => 'custom-select select2'.($errors->has('grade') ? 'is-invalid':'') ,'required'
                         => '', 'placeholder' => 'Pilih Bintang Hotel ...'])!!}
                         @if ($errors->has('grade'))
                         <div class="invalid-feedback">{{ $errors->first('grade') }}</div>
@@ -78,6 +78,7 @@
 <script src="{{asset('js/formplugins/dropzone/dropzone.js')}}"></script>
 <script>
     $(document).ready(function(){
+        $('.select2').select2();
         $('#photo').change(function(){
             
             let reader = new FileReader();

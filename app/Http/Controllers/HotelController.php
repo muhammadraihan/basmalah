@@ -33,6 +33,13 @@ class HotelController extends Controller
                     $url = asset('photo');
                     return '<image style="width: 150px; height: 150px;"  src="'.$url.'/'.$row->photo.'" alt="">';
                 })
+                ->editColumn('grade', function ($row){
+                    $star = '';
+                    for ($i = 0; $i < $row->grade; $i++){
+                        $star .= '<i class="mdi mdi-star">&#11088;</i>';
+                    }
+                    return $star;
+                })
                 ->addColumn('action', function ($row) {
                     return '
                             <a class="btn btn-success btn-sm btn-icon waves-effect waves-themed" href="' . route('hotel.edit', $row->uuid) . '"><i class="fal fa-edit"></i></a>
@@ -40,7 +47,7 @@ class HotelController extends Controller
                 })
                 ->removeColumn('id')
                 ->removeColumn('uuid')
-                ->rawColumns(['action','photo'])
+                ->rawColumns(['action','photo', 'grade'])
                 ->make(true);
         }
 
@@ -69,7 +76,7 @@ class HotelController extends Controller
             'name' => 'required',
             'grade' => 'required',
             'location' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ];
 
         $messages = [
@@ -134,7 +141,6 @@ class HotelController extends Controller
             'name' => 'required',
             'grade' => 'required',
             'location' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         $messages = [
