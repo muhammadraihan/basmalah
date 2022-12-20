@@ -93,39 +93,39 @@
             <p class="fw-medium text-uppercase text-primary mb-2">Paket Tur Umrah</p>
             <h1 class="display-5 mb-4">Pilihan Paket Umrah Untuk Kamu</h1>
         </div>
-
-        <div class="container">
-            <div class="row gy-5 gx-4">
-                @php
-                    $incrementNumber = 0
-                @endphp
-                @forelse ($paket as $item)
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
-                    <div class="card-basmalah border-0 me-lg-4 mb-lg-0 mb-4">
-                        <div class="backgroundEffect"></div>
-                        <div class="pic"> <img class=""
-                                src="{{ asset('photo/' . $item->photo) }}"
-                                alt="">
-                            <div class="date"> <span class="day">{{$item->hari}} hari</span></div>
+        <div class="row gy-5 gx-4">
+            @php
+             $incrementNumber = 0
+            @endphp
+            @forelse ($paket as $item)
+            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                <div class="service-item">
+                    <img class="img-fluid" src="{{ asset('photo/' . $item->photo) }}" alt="">
+                    <div class="service-img">
+                        <img class="img-fluid" src="{{ asset('photo/' . $item->photo) }}" alt="">
+                    </div>
+                    <div class="service-detail">
+                        <div class="service-title">
+                            <p class="mb-0 text-primary text-uppercase">{{$item->jenis_paket}}
+                                <span class="badge bg-info">{{$item->hari}} hari</span>
+                            </p>
+                            <hr class="w-25">
+                            <h3 class="mb-2">{{$item->nama}}</h3>
+                            <p class="mb-0 text-secondary">{{"Rp " . number_format($item->harga, 0, ",", ".")}}</p>
+                            <hr class="w-25">
                         </div>
-                        <div class="content">
-                            <p class="h3 mt-4">{{$item->nama}}</p>
-                            <p class="h-1 mt-2 text-uppercase">{{$item->jenis_paket}}</p>
-                            <p class="text-muted mt-3">Far far away, behind the word mountains,
-                                far from the countries Vokalia
-                                and Consonantia, there live the blind texts.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                <div class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></div>
-                            </div>
+                        <div class="service-text">
+                            <p class="text-white mb-0">{{$item->include}}</p>
                         </div>
                     </div>
+                    <a class="btn btn-basmalah" href="">Baca detil</a>
                 </div>
-                @empty
-                    <div class="col-12">
-                        Empty
-                    </div>
-                @endforelse
             </div>
+            @empty
+                <div class="col-12">
+                    Empty
+                </div>
+            @endforelse
         </div>
     </div>
 </div>
@@ -133,32 +133,25 @@
 
 <!-- Project Start -->
 <div class="container-fluid py-4 my-5 px-0  bg-dark">
-    @php
-        $incrementNumber = 0
-    @endphp
-    <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="{{$incrementNumber += 100}}"
-    style="max-width: 600px;">
+    <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
         <p class="fw-medium text-uppercase text-primary mb-2">Akomodasi Yang Disediakan</p>
-        <h1 class="display-5 text-white mb-5">Hotel</h1>
+        <h1 class="display-5 text-white mb-5">Akomodasi Bintang 3</h1>
     </div>
 </div>
 
 <section class="akomodasi-section">
     <div class="container my-4">
-        <div class="row akomodasi-container">
-            @php
-                $incrementNumber = 0
-            @endphp
+        <div class="row">
             @forelse ($hotel as $item)
-            <div class="col-12 col-md-3 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
-                <div class="card">
-                    <img src="{{ asset('photo/' . $item->photo)}}" class="card-img-top" alt="Hotel">
-                    <div class="card-body">
-                      <h5 class="card-title">{{$item->name}}</h5>
-                      <p class="card-text">{{$item->location}}</p>
-                      <a href="#" class="btn btn-basmalah">Lihat lokasi</a>
-                    </div>
-                  </div>
+            <div class="col-12 col-md-3">
+                <div class="img-grid">
+                    <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel">
+                    <div class="my-4 title-hotel">{{$item->name}}</div>
+                    @for($i = 0; $i < $item->grade; $i++)
+                        <div class="my-2">&#11088;</div>
+                    @endfor
+                    <div class="my-3">{{$item->location}}</div>
+                </div>
             </div>
             @empty
                 <div class="col-12">
