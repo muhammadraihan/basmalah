@@ -115,7 +115,7 @@
   $(".transport-carousel").owlCarousel({
     rtl: true,
     smartSpeed: 800,
-    loop: true,
+    loop: false,
     margin: 10,
     dots: true,
     autoplay: true,

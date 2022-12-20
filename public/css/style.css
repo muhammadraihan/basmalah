@@ -60,11 +60,16 @@ h6,
   font-weight: 500;
 }
 
+.bg-basmalah {
+  background-image: url(".../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
+  background: url(".../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
+}
+
 .btn-basmalah {
-  background-color: var(--basmalah1);
+  background-color: var(--basmalah1) !important;
   font-weight: 800;
   font-size: 18px;
-  color: var(--light);
+  color: var(--light) !important;
   border-radius: 8px;
 }
 
@@ -141,7 +146,7 @@ h6,
 .navbar .navbar-nav .nav-link {
   margin-right: 35px;
   padding: 20px 0;
-  color: var(--dark);
+  color: var(--light);
   font-size: 16px;
   font-weight: 500;
   outline: none;
@@ -149,7 +154,9 @@ h6,
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-  color: var(--basmalah1);
+  /* color: var(--basmalah1); */
+  font-weight: 800;
+  color: var(--light);
 }
 
 .navbar .dropdown-toggle::after {
@@ -241,7 +248,7 @@ h6,
       rgba(2, 36, 91, 1) 0%,
       rgba(2, 36, 91, 0) 100%
     ),
-    url(../img/page-header.jpeg) center center no-repeat;
+    url(/public/img/page-header-basmalah.jpeg) center center no-repeat;
   background-size: cover;
 }
 
