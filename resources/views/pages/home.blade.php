@@ -90,11 +90,11 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <p class="fw-medium text-uppercase text-primary mb-2">Paket Tur Umrah</p>
-            <h1 class="display-5 mb-4">Pilihan Paket Umrah Untuk Kamu</h1>
+            <p class="fw-medium text-uppercase text-primary mb-2">Paket Tur Basmalah</p>
+            <h1 class="display-5 mb-4">Pilihan Paket Tour Untuk Kamu</h1>
         </div>
         <div class="container">
-            <div class="row gy-5 gx-4">
+            {{-- <div class="row gy-5 gx-4">
                 @php
                     $incrementNumber = 0
                 @endphp
@@ -124,32 +124,65 @@
                         Empty
                     </div>
                 @endforelse
-            </div>
+            </div> --}}
+
+            <section class="brosur">
+                <div class="row gy-5 gx-4">
+                    @php
+                        $incrementNumber = 0
+                    @endphp
+                    @forelse ($brosur as $item)
+                        <div class="col-md-6 col-12 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                            <div class="card">
+                                <img src="{{ asset('photo/' . $item->photo) }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <div class="text-primary mt-2">{{$item->name}}</div>
+                                <h3 class="card-title mt-2 mb-3">{{$item->keterangan}}</h3>
+                                <a href="#" class="my-2 btn btn-primary">Lihat Detil <span class="fas fa-arrow-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12">
+                            Empty
+                        </div>
+                    @endforelse
+                </div>
+            </section>
         </div>
     </div>
 </div>
 <!-- Service End -->
 
 <!-- Project Start -->
-<div class="container-fluid py-4 my-5 px-0  bg-dark">
+<div class="container-fluid py-4 my-5 px-0 bg-white">
     <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-        <p class="fw-medium text-uppercase text-primary mb-2">Akomodasi Yang Disediakan</p>
-        <h1 class="display-5 text-white mb-5">Akomodasi Bintang 3</h1>
+        <p class="fw-medium text-uppercase mb-2 h1">Hotel yang disediakan</p>
     </div>
 </div>
 
 <section class="akomodasi-section">
     <div class="container my-4">
         <div class="row">
+            @php
+                $incrementNumber = 0
+            @endphp
             @forelse ($hotel as $item)
-            <div class="col-12 col-md-3">
-                <div class="img-grid">
-                    <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel">
-                    <div class="my-4 title-hotel">{{$item->name}}</div>
-                    @for($i = 0; $i < $item->grade; $i++)
-                        <div class="my-2">&#11088;</div>
-                    @endfor
-                    <div class="my-3">{{$item->location}}</div>
+            <div class="col-12 col-md-3 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                <div class="card-akomodasi">
+                    <div class="card">
+                        <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$item->name}}</h5>
+                          <p class="card-text">{{$item->location}}</p>
+                            <div class="d-flex mb-4">
+                                @for($i = 0; $i < $item->grade; $i++)
+                                    <div class="mx-2">&#11088;</div>
+                                @endfor
+                            </div>
+                          <a href="#" class="btn btn-small-basmalah">Lihat Detil</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             @empty
@@ -163,10 +196,9 @@
 <!-- Project End -->
 
 <!-- Project Start -->
-<div class="container-fluid py-4 my-5 px-0  bg-dark">
+<div class="container-fluid py-4 my-5 px-0 bg-white">
     <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-        <p class="fw-medium text-uppercase text-primary mb-2">Akomodasi Yang Disediakan</p>
-        <h1 class="display-5 text-white mb-5">Transportasi</h1>
+        <p class="fw-medium text-uppercase mb-2 h1">Transportasi</p>
     </div>
 </div>
 
@@ -186,6 +218,61 @@
     </div>
 </section>
 <!-- Project End -->
+
+<!-- Features Start -->
+<div class="container-fluid py-4 my-5 px-0 bg-white">
+    <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
+        <p class="fw-medium text-uppercase mb-2 h1">Video Basmalah Travel</p>
+    </div>
+</div>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="position-relative me-lg-4">
+                    <img class="img-fluid w-100" src="img/video-img.jpeg" alt="">
+                    <span
+                        class="position-absolute top-50 start-100 translate-middle bg-white rounded-circle d-none d-lg-block"
+                        style="width: 120px; height: 120px;"></span>
+                    <button type="button" class="btn-play" data-bs-toggle="modal"
+                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <p class="fw-medium text-uppercase text-primary mb-2">Keberangkatan Umrah</p>
+                <h3 class="mb-4 text-capitalize">Keberangkatan Jamaah Umrah Tahun 2020</h3>
+                <p class="mb-4"> 334 Jamaah Berangkat Ke Tanah Suci untuk melaksanakan ibadah Umrah. Semoga perjalanan Ibadah Umrah seluruh
+                    jamaah Basmalah senantiasa diberikan kemudahan, dan sekembalinya nanti mendapatkan keberkahan dan tawakal beribadah kepada Allah SWT. Aamiin.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features End -->
+
+
+<!-- Video Modal Start -->
+<div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
+                        allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Video Modal End -->
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i

@@ -1079,3 +1079,30 @@ h6,
   border-radius: 24px;
 }
 
+.card-akomodasi .card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  border-radius: 4px;
+}
+
+.btn-small-basmalah {
+  font-size: 13px !important;
+  color: white;
+  background-color: #1b9ce3 !important;
+  border-radius: 24px !important;
+}
+
+.btn-small-basmalah:hover {
+  color: white;
+  background-color:#02245b !important;
+}
+
+.brosur .card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  border-radius: 4px;
+}
+
+.brosur .btn-primary {
+  border-radius: 24px;
+  color: white;
+  font-size: 14px;
+}
