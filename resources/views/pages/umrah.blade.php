@@ -27,149 +27,39 @@
             <h1 class="display-5 mb-5">Paket Umrah</h1>
         </div>
         <div class="container">
-            <div class="row wow fadeIn" data-wow-delay="0.1s">
-                <div class="col-6 col-md-4">
-                    <div class="umrah-item">
-                        <div class="umrah-thumbnail">
-                            <img src="img/paket/madinah.jpeg" alt="">
+            <div class="row gy-5 gx-4">
+                @php
+                    $incrementNumber = 0
+                @endphp
+                @forelse ($paket as $item)
+                <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                    <div class="card-basmalah border-0 me-lg-4 mb-lg-0 mb-4">
+                        <div class="backgroundEffect"></div>
+                        <div class="pic"> <img class=""
+                                src="{{ asset('photo/' . $item->photo) }}"
+                                alt="">
+                            <div class="date"> <span class="day">{{$item->hari}} hari</span></div>
                         </div>
-                        <div class="umrah-desc mt-4 text-center">
-                            <div class="umrah-title">
-                                <h4>Berkah</h4>
-                            </div>
-                            <div class="umrah-price">
-                                Rp 30juta
-                            </div>
-                            <div class="umrah-features">
-                                <ul>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Madinah</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Hotel Bintang 5</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Airlines Garuda</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>1 Pembimbing</li>
-                                </ul>
+                        <div class="content">
+                            <p class="h3 mt-4">{{$item->NamaPaket->name}}</p>
+                            <p class="h-1 mt-2 text-uppercase">{{$item->Kategori->name}}</p>
+                            <p class="mt-3 h5">{{'Mulai Rp.'.' '.number_format($item->harga)}}</p>
+                            <p class="text-muted mt-3">{{$item->detail}}</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                                <div class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></div>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-basmalah w-100 my-2">Pesan Sekarang</a>
                     </div>
                 </div>
-                <div class="col-6 col-md-4">
-                    <div class="umrah-item">
-                        <div class="umrah-thumbnail">
-                            <img src="img/paket/madinah.jpeg" alt="">
-                        </div>
-                        <div class="umrah-desc mt-4 text-center">
-                            <div class="umrah-title">
-                                <h4>Berkah</h4>
-                            </div>
-                            <div class="umrah-price">
-                                Rp 30juta
-                            </div>
-                            <div class="umrah-features">
-                                <ul>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Madinah</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Hotel Bintang 5</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Airlines Garuda</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>1 Pembimbing</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-basmalah w-100 my-2">Pesan Sekarang</a>
+                @empty
+                    <div class="col-12">
+                        Empty
                     </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="umrah-item">
-                        <div class="umrah-thumbnail">
-                            <img src="img/paket/madinah.jpeg" alt="">
-                        </div>
-                        <div class="umrah-desc mt-4 text-center">
-                            <div class="umrah-title">
-                                <h4>Berkah</h4>
-                            </div>
-                            <div class="umrah-price">
-                                Rp 30juta
-                            </div>
-                            <div class="umrah-features">
-                                <ul>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Madinah</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Hotel Bintang 5</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>Airlines Garuda</li>
-                                    <li><i class="fa fa-check ml-4 me-2 text-primary"></i>1 Pembimbing</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-basmalah w-100 my-2">Pesan Sekarang</a>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </div>
     <!-- Project End -->
-
-    <div class="container-fluid py-5 my-5 px-0">
-        <div class="text-center mx-auto wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="display-5 mb-5">Jadwal Keberangkatan</h1>
-        </div>
-
-        <div class="container py-4">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Paket Umrah</th>
-                        <th scope="col">Oktober 2022</th>
-                        <th scope="col">November 2022</th>
-                        <th scope="col">Desember 2022</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    <tr>
-                        <th scope="row">Berkah</th>
-                        <td>
-                            <div>8 Oktober 2022</div>
-                            <div>23 Oktober 2022</div>
-                        </td>
-                        <td>
-                            <div>8 November 2022</div>
-                            <div>23 November 2022</div>
-                        </td>
-                        <td>
-                            <div>8 Desember 2022</div>
-                            <div>23 Desember 2022</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Berkah 2</th>
-                        <td>
-                            <div>8 Oktober 2022</div>
-                            <div>23 Oktober 2022</div>
-                        </td>
-                        <td>
-                            <div>8 November 2022</div>
-                            <div>23 November 2022</div>
-                        </td>
-                        <td>
-                            <div>8 Desember 2022</div>
-                            <div>23 Desember 2022</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Berkah 3</th>
-                        <td>
-                            <div>8 Oktober 2022</div>
-                            <div>23 Oktober 2022</div>
-                        </td>
-                        <td>
-                            <div>8 November 2022</div>
-                            <div>23 November 2022</div>
-                        </td>
-                        <td>
-                            <div>8 Desember 2022</div>
-                            <div>23 Desember 2022</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
 
 <!-- Back to Top -->

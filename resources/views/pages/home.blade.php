@@ -94,12 +94,12 @@
             <h1 class="display-5 mb-4">Pilihan Paket Tour Untuk Kamu</h1>
         </div>
         <div class="container">
-            {{-- <div class="row gy-5 gx-4">
+            <div class="row gy-5 gx-4">
                 @php
                     $incrementNumber = 0
                 @endphp
                 @forelse ($paket as $item)
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                     <div class="card-basmalah border-0 me-lg-4 mb-lg-0 mb-4">
                         <div class="backgroundEffect"></div>
                         <div class="pic"> <img class=""
@@ -108,11 +108,10 @@
                             <div class="date"> <span class="day">{{$item->hari}} hari</span></div>
                         </div>
                         <div class="content">
-                            <p class="h3 mt-4">{{$item->nama}}</p>
-                            <p class="h-1 mt-2 text-uppercase">{{$item->jenis_paket}}</p>
-                            <p class="text-muted mt-3">Far far away, behind the word mountains,
-                                far from the countries Vokalia
-                                and Consonantia, there live the blind texts.</p>
+                            <p class="h3 mt-4">{{$item->NamaPaket->name}}</p>
+                            <p class="h-1 mt-2 text-uppercase">{{$item->Kategori->name}}</p>
+                            <p class="mt-3 h5">{{'Mulai Rp.'.' '.number_format($item->harga)}}</p>
+                            <p class="text-muted mt-3">{{$item->detail}}</p>
                             <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
                                 <div class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></div>
                             </div>
@@ -124,9 +123,26 @@
                         Empty
                     </div>
                 @endforelse
-            </div> --}}
+            </div>
 
-            <section class="brosur">
+            <div class="container">
+                <div class="row gy-5 gx-3">
+                    {{-- Jadi Button --}}
+                    @forelse ($kategori as $item)
+                    <div class="col-md-4 col-lg-4">
+                        <a href="{{ route('umrah', $item->uuid) }}">
+                            <h4>{{$item->name}}</h4>
+                        </a>
+                    </div>    
+                    @empty
+                        <div class="col-12">
+                            Empty
+                        </div>
+                    @endforelse
+                </div>
+            </div>
+
+            {{-- <section class="brosur">
                 <div class="row gy-5 gx-4">
                     @php
                         $incrementNumber = 0
@@ -148,7 +164,7 @@
                         </div>
                     @endforelse
                 </div>
-            </section>
+            </section> --}}
         </div>
     </div>
 </div>
@@ -229,6 +245,7 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
+                @foreach ($youtube as $item)
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative me-lg-4">
                     <img class="img-fluid w-100" src="img/video-img.jpeg" alt="">
@@ -236,7 +253,7 @@
                         class="position-absolute top-50 start-100 translate-middle bg-white rounded-circle d-none d-lg-block"
                         style="width: 120px; height: 120px;"></span>
                     <button type="button" class="btn-play" data-bs-toggle="modal"
-                        data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                        data-src="{{$item->link}}" data-bs-target="#videoModal">
                         <span></span>
                     </button>
                 </div>
@@ -247,6 +264,7 @@
                 <p class="mb-4"> 334 Jamaah Berangkat Ke Tanah Suci untuk melaksanakan ibadah Umrah. Semoga perjalanan Ibadah Umrah seluruh
                     jamaah Basmalah senantiasa diberikan kemudahan, dan sekembalinya nanti mendapatkan keberkahan dan tawakal beribadah kepada Allah SWT. Aamiin.</p>
             </div>
+                @endforeach
         </div>
     </div>
 </div>

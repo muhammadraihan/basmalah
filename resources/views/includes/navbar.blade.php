@@ -33,7 +33,7 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : ''}}">Beranda</a>
             <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : ''}}">Tentang Kami</a>
-            <a href="{{ route('umrah') }}" class="nav-item nav-link {{ request()->is('umrah') ? 'active' : ''}}">Paket Umrah</a>
+            {{-- <a href="{{ route('umrah') }}" class="nav-item nav-link {{ request()->is('umrah') ? 'active' : ''}}">Paket Umrah</a> --}}
             <a href="{{ route('haji') }}" class="nav-item nav-link {{ request()->is('haji') ? 'active' : ''}}">Paket Haji</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Layanan</a>

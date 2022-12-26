@@ -26,11 +26,11 @@ Route::group(['prefix' => '/'], function () {
     Route::view('/', 'FrontEndController', 'pages.home')->name('home');
     Route::get('/', 'FrontEndController@index')->name('home');
     Route::view('about', 'FrontEndController', 'pages.about')->name('about');
-    Route::get('about', 'FrontEndController@about')->name('about');
-    Route::view('umrah', 'FrontEndController', 'pages.umrah')->name('umrah');
-    Route::get('umrah', 'FrontEndController@umrah')->name('umrah');
+    Route::get('/about', 'FrontEndController@about')->name('about');
+    // Route::view('umrah', 'FrontEndController', 'pages.umrah')->name('umrah');
+    Route::get('/umrah/{uuid}', 'FrontEndController@umrah')->name('umrah');
     Route::view('haji', 'FrontEndController', 'pages.haji')->name('haji');
-    Route::get('haji', 'FrontEndController@haji')->name('haji');
+    Route::get('/haji', 'FrontEndController@haji')->name('haji');
 });
 
 Auth::routes(['register' => false]);

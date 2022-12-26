@@ -23,7 +23,7 @@ class YoutubeController extends Controller
      */
     public function index()
     {
-        $utube = Youtube::all();
+        $youtube = Youtube::all();
         if (request()->ajax()) {
             $data = Youtube::get();
 
@@ -78,11 +78,11 @@ class YoutubeController extends Controller
         $this->validate($request, $rules, $messages);
         // dd($request->photo);
 
-        $utube = new Youtube();
-        $utube->name = $request->name;
-        $utube->keterangan = $request->keterangan;
-        $utube->link = $request->link;
-        $utube->save();
+        $youtube = new Youtube();
+        $youtube->name = $request->name;
+        $youtube->keterangan = $request->keterangan;
+        $youtube->link = $request->link;
+        $youtube->save();
 
         toastr()->success('New Link Youtube Added', 'Success');
         return redirect()->route('youtube.index');

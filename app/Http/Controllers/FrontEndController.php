@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Brosur;
 use App\Models\Home;
 use App\Models\Hotel;
+use App\Models\Kategori;
 use App\Models\Transport;
 use App\Models\Paket;
 use App\Models\Youtube;
@@ -28,8 +29,9 @@ class FrontendController extends Controller
         $transport = Transport::all();
         $paket = Paket::all();
         $youtube = Youtube::all();
+        $kategori = Kategori::all();
 
-        return view('pages.home', compact('about', 'brosur', 'home', 'hotel', 'transport', 'paket', 'youtube'));
+        return view('pages.home', compact('about', 'brosur', 'home', 'hotel', 'transport', 'paket', 'youtube', 'kategori'));
     }
 
     public function about()
@@ -39,9 +41,10 @@ class FrontendController extends Controller
         return view(('pages.about'), compact('about'));
     }
 
-    public function umrah()
+    public function umrah($id)
     {
-        $paket = Paket::all();
+        $paket = Paket::uuid($id);
+        $result = Paket::all()->where('kategori', 'like', $paket);
 
         return view(('pages.umrah'), compact('paket'));
     }
