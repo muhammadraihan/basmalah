@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Paket;
 use App\Models\Transport;
 use App\Models\Hotel;
+use App\Models\Kategori;
+use App\Models\NamaPaket;
 use Carbon\Carbon;
 
 use Auth;
@@ -37,6 +39,12 @@ class PaketController extends Controller
                 })
                 ->editColumn('transportasi', function($row){
                     return $row->Transport->name;
+                })
+                ->editColumn('kategori', function($row){
+                    return $row->Kategori->name;
+                })
+                ->editColumn('nama', function($row){
+                    return $row->NamaPaket->name;
                 })
                 ->editColumn('hotel', function($row){
                     return $row->Hotel->name;
@@ -80,11 +88,19 @@ class PaketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $transport = Transport::all()->pluck('name', 'uuid');
         $hotel = Hotel::all()->pluck('name', 'uuid');
-        return view('paket.create',compact('transport', 'hotel'));
+        $kategori = Kategori::all()->pluck('name', 'uuid');
+        return view('paket.create',compact('transport', 'hotel','kategori'));
+    }
+
+    public function namaPaket(Request $request){
+        if(request()->ajax()){
+            $namapaket = NamaPaket::all()->where('kategori', request()->get('kategori'))->pluck('name', 'uuid')->all();
+            return response()->json($namapaket);
+        }
     }
 
     /**
@@ -96,7 +112,7 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'jenis_paket' => 'required',
+            'kategori' => 'required',
             'nama' => 'required',
             'include' => 'required',
             'exclude' => 'required',
@@ -105,7 +121,8 @@ class PaketController extends Controller
             'hotel' => 'required',
             'tanggal' => 'required',
             'hari' => 'required',
-            'photo' => 'required'
+            'photo' => 'required',
+            'detail' => 'required'
         ];
 
         $messages = [
@@ -121,7 +138,7 @@ class PaketController extends Controller
 
 
         $paket = new Paket();
-        $paket->jenis_paket = $request->jenis_paket;
+        $paket->kategori = $request->kategori;
         $paket->nama = $request->nama;
         $paket->tanggal = $request->tanggal;
         $paket->include = $request->include;
@@ -132,6 +149,7 @@ class PaketController extends Controller
         $paket->tanggal = $request->tanggal;
         $paket->hari = $request->hari;
         $paket->photo = $request->photo;
+        $paket->detail = $request->detail;
         $paket->status = 0;
 
         if ($image = $request->file('photo')) {
@@ -167,8 +185,10 @@ class PaketController extends Controller
     {
         $transport = Transport::all()->pluck('name', 'uuid');
         $hotel = Hotel::all()->pluck('name', 'uuid');
+        $kategori = Kategori::all()->pluck('name', 'uuid');
+        $namapaket = NamaPaket::where('kategori', 'like', $kategori->uuid);
         $paket = Paket::uuid($id);
-        return view('paket.edit',compact('transport', 'hotel', 'paket'));
+        return view('paket.edit',compact('transport', 'hotel', 'paket','kategori','namapaket'));
     }
 
     /**
@@ -181,7 +201,7 @@ class PaketController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'jenis_paket' => 'required',
+            'kategori' => 'required',
             'nama' => 'required',
             'include' => 'required',
             'exclude' => 'required',
@@ -190,7 +210,8 @@ class PaketController extends Controller
             'hotel' => 'required',
             'tanggal' => 'required',
             'hari' => 'required',
-            'photo' => 'required'
+            'photo' => 'required',
+            'detail' => 'required'
         ];
 
         $messages = [
@@ -206,7 +227,7 @@ class PaketController extends Controller
 
 
         $paket = Paket::uuid($id);
-        $paket->jenis_paket = $request->jenis_paket;
+        $paket->kategori = $request->kategori;
         $paket->nama = $request->nama;
         $paket->tanggal = $request->tanggal;
         $paket->include = $request->include;
@@ -218,7 +239,8 @@ class PaketController extends Controller
         $paket->hari = $request->hari;
         $paket->status = $request->status;
         $paket->photo = $request->photo;
-
+        $paket->detail = $request->detail;
+        
         if ($image = $request->file('photo')) {
             $destinationPath = 'photo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();

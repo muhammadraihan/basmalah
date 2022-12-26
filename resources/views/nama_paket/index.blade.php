@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', 'Paket Management')
+@section('title', 'Nama Paket Management')
 
 @section('css')
 <link rel="stylesheet" media="screen, print" href="{{asset('css/datagrid/datatables/datatables.bundle.css')}}">
@@ -9,9 +9,9 @@
 @section('content')
 <div class="subheader">
     <h1 class="subheader-title">
-        <i class='subheader-icon fal fa-users'></i> Module: <span class='fw-300'>Paket </span>
+        <i class='subheader-icon fal fa-users'></i> Module: <span class='fw-300'>Nama Paket </span>
         <small>
-            Module for manage Paket.
+            Module for manage Nama Paket.
         </small>
     </h1>
 </div>
@@ -20,10 +20,10 @@
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
             <h2>
-                    Paket  <span class="fw-300"><i>List</i></span>
+                    Nama Paket  <span class="fw-300"><i>List</i></span>
                 </h2>
                 <div class="panel-toolbar">
-                    <a class="nav-link active" href="{{route('paket.create')}}"><i class="fal fa-plus-circle">
+                    <a class="nav-link active" href="{{route('namapaket.create')}}"><i class="fal fa-plus-circle">
                         </i>
                         <span class="nav-link-text">Add New</span>
                     </a>
@@ -40,16 +40,6 @@
                 <th>No</th>
                 <th>Kategori</th>
                 <th>Nama Paket</th>
-                <th>Detail</th>
-                <th>Tanggal Keberangkatan</th>
-                <th>Jumlah Hari</th>
-                <th>Include</th>
-                <th>Exclude</th>
-                <th>Harga</th>
-                <th>Transportasi</th>
-                <th>Hotel</th>
-                <th>Photo</th>
-                <th>Status</th>
                 <th width="120px">Action</th>
                 </tr>
                         </thead>
@@ -106,7 +96,7 @@
             "responsive": true,
             "order": [[ 0, "asc" ]],
             "ajax":{
-                url:'{{route('paket.index')}}',
+                url:'{{route('namapaket.index')}}',
                 type : "GET",
                 dataType: 'json',
                 error: function(data){
@@ -115,18 +105,8 @@
             },
             "columns": [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'kategori', nama: 'kategori'},
-            {data: 'nama', name: 'nama'},
-            {data: 'detail', name: 'detail'},
-            {data: 'tanggal', name: 'tanggal'},
-            {data: 'hari', name: 'hari'},
-            {data: 'include', name: 'name'},
-            {data: 'exclude', name: 'exclude'},
-            {data: 'harga', name: 'harga'},
-            {data: 'transportasi', name: 'transportasi'},
-            {data: 'hotel', name: 'hotel'},
-            {data: 'photo', name: 'photo'},
-            {data: 'status', name: 'status'},
+            {data: 'kategori', name:'kategori'},
+            {data: 'name', name: 'name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

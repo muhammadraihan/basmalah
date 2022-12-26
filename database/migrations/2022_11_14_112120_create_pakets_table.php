@@ -16,7 +16,7 @@ class CreatePaketsTable extends Migration
         Schema::create('pakets', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
-            $table->string('jenis_paket')->nullable();
+            $table->string('kategori')->nullable();
             $table->string('nama')->nullable();
             $table->longText('include')->nullable();
             $table->longText('exclude')->nullable();
@@ -24,6 +24,7 @@ class CreatePaketsTable extends Migration
             $table->string('transportasi')->nullable();
             $table->string('hotel')->nullable();
             $table->date('tanggal')->nullable();
+            $table->string('detail')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

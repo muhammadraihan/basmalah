@@ -28,24 +28,34 @@
                 <div class="panel-content">
                     <div class="panel-tag">
                         Form with <code>*</code> can not be empty.
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                     </div>
                     {!! Form::open(['route' => ['paket.update',$paket->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
-                    <div class="form-group col-md-4 mb-3">
-                        {{ Form::label('jenis_paket','Jenis Paket',['class' => 'required form-label'])}}
-                        {!! Form::select('jenis_paket', array('haji' => 'Haji', 'umrah' => 'Umrah'), $paket->jenis_paket,
-                        ['id'=>'jenis_paket','class'
-                        => 'custom-select'.($errors->has('jenis_paket') ? 'is-invalid':'') ,'required'
-                        => '', 'placeholder' => 'Pilih Jenis Paket ...'])!!}
-                        @if ($errors->has('jenis_paket'))
-                        <div class="invalid-feedback">{{ $errors->first('jenis_paket') }}</div>
+                    <div class="form-group col-md-3 mb-3">
+                        {{ Form::label('kategori','Kategori',['class' => 'required form-label'])}}
+                        {!! Form::select('kategori', $kategori, $paket->kategori, ['id' =>
+                        'kategori','class' =>
+                        'kategori form-control'.($errors->has('kategori') ? 'is-invalid':''), 'required'
+                        => '', 'placeholder' => 'Pilih Kategori']) !!} @if ($errors->has('kategori'))
+                        <div class="help-block text-danger">{{ $errors->first('kategori') }}</div>
                         @endif
                     </div>
-                    <div class="form-group col-md-4 mb-3">
+                    <div class="form-group col-md-3 mb-3">
                         {{ Form::label('nama','Nama Paket',['class' => 'required form-label'])}}
-                        {{ Form::text('nama',$paket->nama,['placeholder' => 'Nama Paket','class' => 'form-control '.($errors->has('nama') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
-                        @if ($errors->has('nama'))
-                        <div class="invalid-feedback">{{ $errors->first('nama') }}</div>
+                        <select name="nama" id="nama" class="nama">
+
+                        </select>
+                         @if ($errors->has('nama'))
+                        <div class="help-block text-danger">{{ $errors->first('nama') }}</div>
                         @endif
                     </div>
                     <div class="form-group col-md-4 mb-3">
@@ -109,6 +119,13 @@
                         @endif
                     </div> 
                     <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('detail','Detail Paket',['class' => 'required form-label'])}}
+                        {{ Form::text('detail',$paket->detail,['placeholder' => 'Detail Paket','class' => 'form-control '.($errors->has('detail') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        @if ($errors->has('detail'))
+                        <div class="invalid-feedback">{{ $errors->first('detail') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-4 mb-3">
                         {{ Form::label('photo','Photo',['class' => 'required form-label'])}}
                         <input type="hidden" name="oldImage" value="{{ $paket->photo }}"> 
                         @if ($paket->photo)
@@ -159,9 +176,29 @@
         
         $('.transport').select2();
         $('.hotel').select2();
-        $('#jenis_paket').select2();
+        $('#nama').select2();
+        $('.kategori').select2();
         $('#status').select2();
         $(':input').inputmask();
+
+        $('#kategori').change(function (e) {
+            var kategori = $(this).val();
+            var option = $(this).select2('data');
+            
+            $.ajax({
+                url:"{{route('get.namapaket')}}",
+                type: 'GET',
+                data: {kategori:kategori},
+                success: function(e) {
+                    $("#nama").empty();
+                    $("#nama").append('<option value="">Pilih Nama Paket</option>');
+                    $.each(e, function(key, value) {
+                        $("#nama").append('<option value="'+ key +'">'+ value +'</option>');
+                    });
+                }
+            });
+            
+        });
 
         $('.tanggal').datepicker({
             orientation: "bottom left",

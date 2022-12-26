@@ -47,6 +47,26 @@
             <span class="nav-link-text">Link Youtube</span>
         </a>
     </li>
+    <li>
+        <a href="#" title="Master Data" data-filter-tags="Master Data">
+            <i class="fal fa-exchange"></i>
+            <span class="nav-link-text">Master Data</span>
+        </a>
+        <ul>
+            <li>
+                <a href="{{route('kategori.index')}}" title="Kategori" data-filter-tags="kategori">
+                    <i class="fal fa-exchange"></i>
+                    <span class="nav-link-text">Kategori</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('namapaket.index')}}" title="Nama Paket" data-filter-tags="namapaket">
+                    <i class="fal fa-money-bill-alt"></i>
+                    <span class="nav-link-text">Nama Paket</span>
+                </a>
+            </li>
+        </ul>
+    </li>
     @isset($menu)
     @foreach ($menu as $parent_menu)
     <li class="">
