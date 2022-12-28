@@ -210,7 +210,6 @@
                                     <div class="mx-2">&#11088;</div>
                                 @endfor
                             </div>
-                          <a href="#" class="btn btn-small-basmalah">Lihat Detil</a>
                         </div>
                     </div>
                 </div>
