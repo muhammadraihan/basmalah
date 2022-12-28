@@ -57,7 +57,7 @@
                     dan fasilitas yang terbaik serta harga yang kompetitif.
                 </p>
                 <div class="row pt-2">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 mb-4">
                         <div class="d-flex align-items-center">
                             <div class="flex-shrink-0 btn-lg-square rounded-circle basmalah-primary">
                                 <i class="fa fa-envelope-open text-white"></i>
@@ -86,6 +86,37 @@
 </div>
 <!-- About End -->
 
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <p class="fw-medium text-uppercase text-primary mb-2">Pilihan Paket Untukmu</p>
+            <h1 class="display-5 mb-4">Mau Menunaikan Ibadah Apa?</h1>
+        </div>
+        <div class="container">
+            <div class="row gy-5 gx-3">
+                {{-- Jadi Button --}}
+                @php
+                    $incrementNumber = 0
+                @endphp
+                @forelse ($kategori as $item)
+                <div class="col-md-4 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                    <a href="{{ route('paket', $item->uuid) }}">
+                        <div class="example">
+                            <img src="{{ asset('/img/jenis_paket.jpeg')}}" />
+                            <p>{{$item->name}}</p>	
+                        </div>
+                    </a>
+                </div>    
+                @empty
+                    <div class="col-12">
+                        Empty
+                    </div>
+                @endforelse
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Service Start -->
 <div class="container-xxl py-5">
     <div class="container">
@@ -99,7 +130,7 @@
                     $incrementNumber = 0
                 @endphp
                 @forelse ($paket as $item)
-                <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+                <div class="col-md-6 col-lg-6 wow fadeInUp mb-2" data-wow-delay="{{$incrementNumber += 100}}">
                     <div class="card-basmalah border-0 me-lg-4 mb-lg-0 mb-4">
                         <div class="backgroundEffect"></div>
                         <div class="pic"> <img class=""
@@ -113,7 +144,7 @@
                             <p class="mt-3 h5">{{'Mulai Rp.'.' '.number_format($item->harga)}}</p>
                             <p class="text-muted mt-3">{{$item->detail}}</p>
                             <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                <div class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></div>
+                                <div class="btn btn-primary">Hubungi Kami<span class="fas fa-arrow-right"></span></div>
                             </div>
                         </div>
                     </div>
@@ -123,23 +154,6 @@
                         Empty
                     </div>
                 @endforelse
-            </div>
-
-            <div class="container">
-                <div class="row gy-5 gx-3">
-                    {{-- Jadi Button --}}
-                    @forelse ($kategori as $item)
-                    <div class="col-md-4 col-lg-4">
-                        <a href="{{ route('umrah', $item->uuid) }}">
-                            <h4>{{$item->name}}</h4>
-                        </a>
-                    </div>    
-                    @empty
-                        <div class="col-12">
-                            Empty
-                        </div>
-                    @endforelse
-                </div>
             </div>
 
             {{-- <section class="brosur">
@@ -184,7 +198,7 @@
                 $incrementNumber = 0
             @endphp
             @forelse ($hotel as $item)
-            <div class="col-12 col-md-3 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
+            <div class="col-12 col-md-3 mb-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                 <div class="card-akomodasi">
                     <div class="card">
                         <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="...">

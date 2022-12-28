@@ -24,7 +24,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg navbar-light sticky-top py-2 pe-5 bg-basmalah" style="background: url('img/elements_header_background.png'),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;">
     <a href="index.html" class="navbar-brand ps-5 me-0">
-        <img src="img/logo/Master Logo Vector-8.png" alt="Logo" height="48">
+        <img src="/img/logo/Master Logo Vector-8.png" alt="Logo" height="48">
     </a>
     <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -33,17 +33,23 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : ''}}">Beranda</a>
             <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : ''}}">Tentang Kami</a>
-            {{-- <a href="{{ route('umrah') }}" class="nav-item nav-link {{ request()->is('umrah') ? 'active' : ''}}">Paket Umrah</a> --}}
-            <a href="{{ route('haji') }}" class="nav-item nav-link {{ request()->is('haji') ? 'active' : ''}}">Paket Haji</a>
+            {{-- <a href="{{ route('haji') }}" class="nav-item nav-link {{ request()->is('paket') ? 'active' : ''}}">Pilihan Paket</a> --}}
+            {{-- <a href="{{ route('paket', $paket->uuid) }}" class="nav-item nav-link {{ request()->is('paket') ? 'active' : ''}}">Paket Haji</a> --}}
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pilihan Paket</a>
+                <div class="dropdown-menu bg-light m-0">
+                    <a href="gallery.html" class="dropdown-item">Paket Umrah & Tour</a>
+                    <a href="download.html" class="dropdown-item">Paket Haji</a>
+                </div>
+            </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Layanan</a>
                 <div class="dropdown-menu bg-light m-0">
-                    <a href="fasilitas.html" class="dropdown-item">Fasilitas</a>
-                    <a href="gallery.html" class="dropdown-item">Gallery</a>
+                    <a href="gallery.html" class="dropdown-item">Galeri</a>
                     <a href="download.html" class="dropdown-item">Download</a>
                 </div>
             </div>
-            <a href="contact.html" class="nav-item nav-link">Kontak</a>
+            <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->is('/contact') ? 'active' : ''}}">Kontak</a>
         </div>
     </div>
 </nav>

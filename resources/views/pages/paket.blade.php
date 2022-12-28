@@ -1,7 +1,7 @@
 @extends('layouts.basmalah')
 
 @section('title')
-    Basmalah Tour & Travel - Paket Umrah
+    Basmalah Tour & Travel - Paket {{$paket->name}}
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
-            <h1 class="display-3 text-white animated slideInRight">Paket Umrah</h1>
+            <h1 class="display-3 text-white animated slideInRight">Paket {{$paket->name}}</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb animated slideInRight mb-0">
                     <li class="breadcrumb-item"><a href="#">Basmalah Travel</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Paket Umrah</li>
+                    <li class="breadcrumb-item active" aria-current="page">Paket {{$paket->name}}</li>
                 </ol>
             </nav>
         </div>
@@ -24,14 +24,14 @@
     <!-- Project Start -->
     <div class="container-fluid py-5 my-5 px-0">
         <div class="text-center mx-auto wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h1 class="display-5 mb-5">Paket Umrah</h1>
+            <h1 class="display-5 mb-5">Paket {{$paket->name}}</h1>
         </div>
         <div class="container">
             <div class="row gy-5 gx-4">
                 @php
                     $incrementNumber = 0
                 @endphp
-                @forelse ($paket as $item)
+                @forelse ($result as $item)
                 <div class="col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                     <div class="card-basmalah border-0 me-lg-4 mb-lg-0 mb-4">
                         <div class="backgroundEffect"></div>

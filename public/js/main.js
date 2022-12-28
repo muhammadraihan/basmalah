@@ -115,13 +115,13 @@
   $(".transport-carousel").owlCarousel({
     rtl: true,
     smartSpeed: 800,
-    loop: false,
+    loop: true,
     margin: 10,
     dots: true,
     autoplay: true,
     responsive: {
       0: {
-        items: 1,
+        items: 3,
       },
       600: {
         items: 3,

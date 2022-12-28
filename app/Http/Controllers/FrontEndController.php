@@ -41,18 +41,24 @@ class FrontendController extends Controller
         return view(('pages.about'), compact('about'));
     }
 
-    public function umrah($id)
+    public function contact()
     {
-        $paket = Paket::uuid($id);
-        $result = Paket::all()->where('kategori', 'like', $paket);
-
-        return view(('pages.umrah'), compact('paket'));
+        return view(('pages.contact'));
     }
 
-    public function haji()
+    public function umrah($id)
     {
-        $paket = Paket::all();
+        $paket = Kategori::uuid($id);
+        $result = Paket::all()->where('kategori', 'like', $paket->uuid);
 
-        return view(('pages.haji'), compact('paket'));
+        return view(('pages.paket'), compact('paket', 'result'));
+    }
+
+    public function navbar($id)
+    {
+        $paket = Kategori::uuid($id);
+        $result = Paket::all()->where('kategori', 'like', $paket->uuid);
+
+        return view(('includes.navbar'), compact('paket', 'result'));
     }
 }
