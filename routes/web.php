@@ -60,5 +60,9 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function () {
     Route::resource('youtube', 'YoutubeController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('namapaket', 'NamaPaketController');
+    Route::resource('galeri', 'GaleriController');
+    Route::resource('download', 'DownloadController');
+    Route::resource('konten', 'KontenController');
+    Route::resource('testimoni', 'TestimoniController');
     Route::get('namaPaket', 'PaketController@namaPaket')->name('get.namapaket');
 });
