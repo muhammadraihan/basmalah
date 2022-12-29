@@ -42,10 +42,42 @@
         </a>
     </li>
     <li>
-        <a href="{{route('youtube.index')}}" title="Youtube" data-filter-tags="youtube">
-            <i class="fal fa-caret-circle-right"></i>
-            <span class="nav-link-text">Link Youtube</span>
+        <a href="#" title="Media" data-filter-tags="Media">
+            <i class="fal fa-play-circle"></i>
+            <span class="nav-link-text">Media</span>
         </a>
+        <ul>
+            <li>
+                <a href="{{route('youtube.index')}}" title="Youtube" data-filter-tags="youtube">
+                    <i class="fal fa-caret-circle-right"></i>
+                    <span class="nav-link-text">Link Youtube</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('galeri.index')}}" title="Galerry" data-filter-tags="gallery">
+                    <i class="fal fa-camera-alt"></i>
+                    <span class="nav-link-text">Gallery</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('download.index')}}" title="Download" data-filter-tags="download">
+                    <i class="fal fa-download"></i>
+                    <span class="nav-link-text">Link Download</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('konten.index')}}" title="Konten" data-filter-tags="konten">
+                    <i class="fal fa-film"></i>
+                    <span class="nav-link-text">Konten</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('testimoni.index')}}" title="Testimoni" data-filter-tags="testimoni">
+                    <i class="fal fa-file-image"></i>
+                    <span class="nav-link-text">Testimoni</span>
+                </a>
+            </li>
+        </ul>
     </li>
     <li>
         <a href="#" title="Master Data" data-filter-tags="Master Data">
