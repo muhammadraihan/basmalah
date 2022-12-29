@@ -45,8 +45,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Layanan</a>
                 <div class="dropdown-menu bg-light m-0">
-                    <a href="gallery.html" class="dropdown-item">Galeri</a>
-                    <a href="download.html" class="dropdown-item">Download</a>
+                    <a href="{{ route('gallery') }}" class="dropdown-item">Galeri</a>
+                    <a href="{{ route('download') }}" class="dropdown-item">Download</a>
                 </div>
             </div>
             <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->is('/contact') ? 'active' : ''}}">Kontak</a>

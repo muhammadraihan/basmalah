@@ -46,6 +46,16 @@ class FrontendController extends Controller
         return view(('pages.contact'));
     }
 
+    public function gallery()
+    {
+        return view(('pages.gallery'));
+    }
+
+    public function download()
+    {
+        return view(('pages.download'));
+    }
+
     public function umrah($id)
     {
         $paket = Kategori::uuid($id);

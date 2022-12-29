@@ -26,6 +26,8 @@ Route::group(['prefix' => '/'], function () {
     Route::view('/', 'FrontEndController', 'pages.home')->name('home');
     Route::get('/contact', 'FrontEndController@contact', 'pages.contact')->name('contact');
     Route::get('/', 'FrontEndController@index')->name('home');
+    Route::get('gallery', 'FrontEndController@gallery', 'pages.gallery')->name('gallery');
+    Route::get('download', 'FrontEndController@download', 'pages.download')->name('download');
     Route::view('about', 'FrontEndController', 'pages.about')->name('about');
     Route::get('/about', 'FrontEndController@about')->name('about');
     // Route::view('umrah', 'FrontEndController', 'pages.umrah')->name('umrah');
