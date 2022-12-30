@@ -38,8 +38,10 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pilihan Paket</a>
                 <div class="dropdown-menu bg-light m-0">
-                    <a href="gallery.html" class="dropdown-item">Paket Umrah & Tour</a>
-                    <a href="download.html" class="dropdown-item">Paket Haji</a>
+                    @foreach ($kategori as $item)
+                    <a href="{{ route('paket', $item->uuid)}}" class="dropdown-item">{{$item->name}}</a>
+                    @endforeach
+                    {{-- <a href="download.html" class="dropdown-item">Paket Haji</a> --}}
                 </div>
             </div>
             <div class="nav-item dropdown">

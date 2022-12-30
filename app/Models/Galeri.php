@@ -12,6 +12,6 @@ class Galeri extends Model
     use Uuid;
 
     protected $fillable = [
-        'judul', 'keterangan', 'photo'
+        'judul', 'keterangan', 'photo', 'timestamp'
     ];
 }

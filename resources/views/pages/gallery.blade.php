@@ -25,36 +25,22 @@
             @php
                 $incrementNumber = 0
             @endphp
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">
+            @forelse ($gallery as $item)
+            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                 <div class="card card-gallery">
-                    <img src="{{ asset('/img/dummy-gallery.jpeg') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('photo/' . $item->photo) }}" class="card-img-top" alt="Image">
                     <div class="card-body">
-                      <h5 class="card-title">Judul Event/Dokumentasi</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <span class="text-muted small mt-2">30 November 2022</span>
+                      <h5 class="card-title">{{$item->judul}}</h5>
+                      <p class="card-text">{{$item->keterangan}}</p>
+                      <span class="text-muted small mt-2">{{$item->timestamp}}</span>
                     </div>
                   </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="card card-gallery">
-                    <img src="{{ asset('/img/dummy-gallery-2.jpeg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Judul Event/Dokumentasi</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <span class="text-muted small mt-2">30 November 2022</span>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="card card-gallery">
-                    <img src="{{ asset('/img/dummy-gallery-3.jpeg') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">Judul Event/Dokumentasi</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <span class="text-muted small mt-2">30 November 2022</span>
-                    </div>
-                  </div>
-            </div>
+            @empty
+                <div class="col-12">
+                    Empty
+                </div>
+            @endforelse
         </div>
     </div>
 </div>

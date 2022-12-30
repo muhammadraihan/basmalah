@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\About;
 use App\Models\Brosur;
+use App\Models\Download;
+use App\Models\Galeri;
 use App\Models\Home;
 use App\Models\Hotel;
 use App\Models\Kategori;
@@ -37,38 +39,48 @@ class FrontendController extends Controller
     public function about()
     {
         $about = About::all();
+        $kategori = Kategori::all();
 
-        return view(('pages.about'), compact('about'));
+        return view(('pages.about'), compact('about', 'kategori'));
     }
 
     public function contact()
     {
-        return view(('pages.contact'));
+        $kategori = Kategori::all();
+        return view(('pages.contact'), compact('kategori'));
     }
 
     public function gallery()
     {
-        return view(('pages.gallery'));
+        $gallery = Galeri::all();
+        $kategori = Kategori::all();
+
+        return view(('pages.gallery'), compact('gallery', 'kategori'));
     }
 
     public function download()
     {
-        return view(('pages.download'));
+        $download = Download::all();
+        $kategori = Kategori::all();
+
+        return view(('pages.download'), compact('download', 'kategori'));
     }
 
     public function umrah($id)
     {
         $paket = Kategori::uuid($id);
         $result = Paket::all()->where('kategori', 'like', $paket->uuid);
+        $kategori = Kategori::all();
 
-        return view(('pages.paket'), compact('paket', 'result'));
+        return view(('pages.paket'), compact('paket', 'result', 'kategori'));
     }
 
     public function navbar($id)
     {
         $paket = Kategori::uuid($id);
+        $kategori = Kategori::all();
         $result = Paket::all()->where('kategori', 'like', $paket->uuid);
 
-        return view(('includes.navbar'), compact('paket', 'result'));
+        return view(('includes.navbar'), compact('paket', 'result', 'kategori'));
     }
 }
