@@ -8,6 +8,15 @@
   --basmalah2: #f4d439;
 }
 
+body {
+  height: 100vh;
+  width: 100vw;
+  background: url('../../img/elements_header_background.png') rgba(0, 0, 0, 0.07);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
 .back-to-top {
   position: fixed;
   display: none;
@@ -61,8 +70,8 @@ h6,
 }
 
 .bg-basmalah {
-  background-image: url(".../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
-  background: url(".../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
+  background-image: url("/../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
+  background: url("/../img/elements_header_background.png"),linear-gradient(to right,rgb(172,28,48),rgb(255,196,13)) !important;
 }
 
 .btn-basmalah {
@@ -923,20 +932,20 @@ h6,
 
 .card-basmalah {
   width: 100%;
-  height: 520px;
+  height: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background: #fff;
   transition: all 0.5s ease;
   cursor: pointer;
   user-select: none;
   z-index: 10;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .card-basmalah .backgroundEffect {
   bottom: 0;
   height: 0px;
-  width: 100%
+  width: 100%;
 }
 
 .card-basmalah:hover {
@@ -952,43 +961,43 @@ h6,
   position: absolute;
   z-index: -1;
   background: #1b9ce3;
-  animation: popBackground 0.3s ease-in
+  animation: popBackground 0.3s ease-in;
 }
 
 @keyframes popBackground {
   0% {
       height: 20px;
       border-top-left-radius: 50%;
-      border-top-right-radius: 50%
+      border-top-right-radius: 50%;
   }
 
   50% {
       height: 80px;
       border-top-left-radius: 75%;
-      border-top-right-radius: 75%
+      border-top-right-radius: 75%;
   }
 
   75% {
       height: 160px;
       border-top-left-radius: 85%;
-      border-top-right-radius: 85%
+      border-top-right-radius: 85%;
   }
 
   100% {
       height: 320px;
       border-top-left-radius: 100%;
-      border-top-right-radius: 100%
+      border-top-right-radius: 100%;
   }
 }
 
 .card-basmalah .pic {
-  position: relative
+  position: relative;
 }
 
 .card-basmalah .pic img {
   width: 100%;
   height: 280px;
-  object-fit: cover
+  object-fit: cover;
 }
 
 .card-basmalah .date {
@@ -1009,24 +1018,24 @@ h6,
 
 .card-basmalah .date .day {
   font-size: 14px;
-  font-weight: 600
+  font-weight: 600;
 }
 
 .card-basmalah .date .month,
 .card-basmalah .date .year {
-  font-size: 10px
+  font-size: 10px;
 }
 
 .card-basmalah .text-muted {
-  font-size: 12px
+  font-size: 12px;
 }
 
 .card-basmalah:hover .text-muted {
-  color: #fff !important
+  color: #fff !important;
 }
 
 .card-basmalah .content {
-  padding: 0 20px
+  padding: 0 20px;
 }
 
 .card-basmalah .content .btn {
@@ -1037,13 +1046,13 @@ h6,
   background-color: #1b9ce3;
   border-radius: 25px;
   font-size: 12px;
-  border: none
+  border: none;
 }
 
 .card-basmalah:hover .content .btn {
   background: #fff;
   color: #1b9ce3;
-  box-shadow: #0000001a 0px 3px 5px
+  box-shadow: #0000001a 0px 3px 5px;
 }
 
 .card-basmalah:hover .content .h3 {
@@ -1052,20 +1061,20 @@ h6,
 
 .card-basmalah .content .btn .fas {
   font-size: 10px;
-  padding-left: 5px
+  padding-left: 5px;
 }
 
 .card-basmalah .content .foot .admin {
   color: #1b9ce3;
-  font-size: 12px
+  font-size: 12px;
 }
 
 .card-basmalah:hover .content .foot .admin {
-  color: #fff
+  color: #fff;
 }
 
 .card-basmalah .content .foot .icon {
-  font-size: 12px
+  font-size: 12px;
 }
 
 .akomodasi-container .card {
@@ -1136,3 +1145,19 @@ h6,
 .example img {
   width: 100%;
 }
+
+.brighten img {
+  filter: brightness(100%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  }
+  
+  .brighten:hover img {
+  filter: brightness(70%);
+  border-radius: 12px;
+  }
+  
+  

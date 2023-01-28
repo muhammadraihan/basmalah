@@ -5,29 +5,28 @@
 @endsection
 
 @section('content')
-    <!-- Carousel Start -->
+<!-- Carousel Start -->
 <div class="container-fluid px-0 mb-5">
-    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
         <div class="carousel-inner">
             @forelse ($home as $key => $item)
             <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
-                <img class="w-100" src="{{asset('photo/' . $item->photo)}}" alt="Image">
+                <img src="{{asset('photo/' . $item->photo)}}" class="d-block w-100" alt="Picture">
             </div>
             @empty
                 <div class="col-12">
                     Empty
                 </div>
             @endforelse
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
         </button>
-    </div>
+      </div>
 </div>
 <!-- Carousel End -->
 
@@ -101,7 +100,7 @@
                 @forelse ($kategori as $item)
                 <div class="col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                     <a href="{{ route('paket', $item->uuid) }}">
-                        <div class="example">
+                        <div class="example brighten">
                             <img src="{{ asset('/img/jenis_paket.jpeg')}}" />
                             <p>{{$item->name}}</p>	
                         </div>
@@ -160,37 +159,13 @@
                     </div>
                 @endforelse
             </div>
-
-            {{-- <section class="brosur">
-                <div class="row gy-5 gx-4">
-                    @php
-                        $incrementNumber = 0
-                    @endphp
-                    @forelse ($brosur as $item)
-                        <div class="col-md-6 col-12 col-lg-6 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
-                            <div class="card">
-                                <img src="{{ asset('photo/' . $item->photo) }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                <div class="text-primary mt-2">{{$item->name}}</div>
-                                <h3 class="card-title mt-2 mb-3">{{$item->keterangan}}</h3>
-                                <a href="#" class="my-2 btn btn-primary">Lihat Detil <span class="fas fa-arrow-right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="col-12">
-                            Empty
-                        </div>
-                    @endforelse
-                </div>
-            </section> --}}
         </div>
     </div>
 </div>
 <!-- Service End -->
 
 <!-- Project Start -->
-<div class="container-fluid py-4 my-5 px-0 bg-white">
+<div class="container-fluid py-4 my-5 px-0">
     <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
         <p class="fw-medium text-uppercase mb-2 h1">Hotel yang disediakan</p>
     </div>
@@ -230,7 +205,7 @@
 <!-- Project End -->
 
 <!-- Project Start -->
-<div class="container-fluid py-4 my-5 px-0 bg-white">
+<div class="container-fluid py-4 my-5 px-0">
     <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
         <p class="fw-medium text-uppercase mb-2 h1">Transportasi</p>
     </div>
@@ -254,7 +229,7 @@
 <!-- Project End -->
 
 <!-- Features Start -->
-<div class="container-fluid py-4 my-5 px-0 bg-white">
+<div class="container-fluid py-4 my-5 px-0">
     <div class="text-center mx-auto mt-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 600px;">
         <p class="fw-medium text-uppercase mb-2 h1">Video Basmalah Travel</p>
     </div>
@@ -266,7 +241,7 @@
                 @foreach ($youtube as $item)
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="position-relative me-lg-4">
-                    <img class="img-fluid w-100" src="img/video-img.jpeg" alt="">
+                    <img class="img-fluid w-100" src="/img/jenis_paket.jpeg" alt="">
                     <span
                         class="position-absolute top-50 start-100 translate-middle bg-white rounded-circle d-none d-lg-block"
                         style="width: 120px; height: 120px;"></span>
@@ -298,7 +273,7 @@
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
             <div class="testimonial-item text-center">
                 <div class="testimonial-img position-relative">
-                    <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-1.jpg">
+                    <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab.png">
                     <div class="btn-square bg-primary rounded-circle">
                         <i class="fa fa-quote-left text-white"></i>
                     </div>
@@ -306,12 +281,19 @@
                 <div class="testimonial-text text-center rounded p-4">
                     <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
                     <h5 class="mb-1">Client Name</h5>
-                    <span class="fst-italic">Profession</span>
+                    <span class="fst-italic">Jemaah Umrah</span>
+                    <div class="d-flex my-2 align-items-center justify-content-center">
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                    </div>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <div class="testimonial-img position-relative">
-                    <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-2.jpg">
+                    <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab-2.png">
                     <div class="btn-square bg-primary rounded-circle">
                         <i class="fa fa-quote-left text-white"></i>
                     </div>
@@ -319,12 +301,19 @@
                 <div class="testimonial-text text-center rounded p-4">
                     <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
                     <h5 class="mb-1">Client Name</h5>
-                    <span class="fst-italic">Profession</span>
+                    <span class="fst-italic">Jemaah Umrah</span>
+                    <div class="d-flex my-2 align-items-center justify-content-center">
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                    </div>
                 </div>
             </div>
             <div class="testimonial-item text-center">
                 <div class="testimonial-img position-relative">
-                    <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-3.jpg">
+                    <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaarboy-1.png">
                     <div class="btn-square bg-primary rounded-circle">
                         <i class="fa fa-quote-left text-white"></i>
                     </div>
@@ -332,7 +321,34 @@
                 <div class="testimonial-text text-center rounded p-4">
                     <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
                     <h5 class="mb-1">Client Name</h5>
-                    <span class="fst-italic">Profession</span>
+                    <span class="fst-italic">Jemaah Umrah</span>
+                    <div class="d-flex my-2 align-items-center justify-content-center">
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item text-center">
+                <div class="testimonial-img position-relative">
+                    <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab-3.png">
+                    <div class="btn-square bg-primary rounded-circle">
+                        <i class="fa fa-quote-left text-white"></i>
+                    </div>
+                </div>
+                <div class="testimonial-text text-center rounded p-4">
+                    <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
+                    <h5 class="mb-1">Client Name</h5>
+                    <span class="fst-italic">Jemaah Umrah</span>
+                    <div class="d-flex my-2 align-items-center justify-content-center">
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                        <div class="mx-2">&#11088;</div>
+                    </div>
                 </div>
             </div>
         </div>

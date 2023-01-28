@@ -25,7 +25,6 @@
 </head>
 
 <body>
-
     {{-- Top Header --}}
     @include('includes.navbar')
 
