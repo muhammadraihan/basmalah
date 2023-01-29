@@ -116,12 +116,12 @@
     rtl: true,
     smartSpeed: 800,
     loop: true,
-    margin: 10,
+    margin: 20,
     dots: true,
     autoplay: true,
     responsive: {
       0: {
-        items: 3,
+        items: 1,
       },
       600: {
         items: 3,
