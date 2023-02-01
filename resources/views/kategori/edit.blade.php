@@ -35,7 +35,7 @@
                             </div>
                             @endif
                     </div>
-                    {!! Form::open(['route' => ['brosur.update',$kategori->uuid],'method' => 'PUT','class' =>
+                    {!! Form::open(['route' => ['kategori.update',$kategori->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('name','Nama Kategori',['class' => 'required form-label'])}}

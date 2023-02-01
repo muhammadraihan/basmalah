@@ -188,7 +188,7 @@ class DownloadController extends Controller
     public function destroy($id)
     {
         $download = Download::uuid($id);
-        $photo = public_path('photo/').$hotel->photo;
+        $photo = public_path('photo/').$download->photo;
         if(file_exists($photo)){
             unlink($photo);
         }

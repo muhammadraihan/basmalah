@@ -176,7 +176,7 @@ class GaleriController extends Controller
     public function destroy($id)
     {
         $galeri = Galeri::uuid($id);
-        $photo = public_path('photo/').$hotel->photo;
+        $photo = public_path('photo/').$galeri->photo;
         if(file_exists($photo)){
             unlink($photo);
         }

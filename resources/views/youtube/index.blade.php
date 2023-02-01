@@ -39,7 +39,7 @@
             <tr>
                 <th>No</th>
                 <th>Nama Video</th>
-                <th>Keterangan</th>
+                <th>Deskripsi</th>
                 <th>Link Youtube</th>
                 <th width="120px">Action</th>
                 </tr>

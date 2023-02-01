@@ -38,12 +38,12 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Judul</th>
+                <th>Komentar</th>
                 <th>Nama Jemaah</th>
                 <th>Usia</th>
                 <th>Nama Paket</th>
                 <th>Tanggal</th>
-                <th>Video</th>
+                <th>Media</th>
                 <th width="120px">Action</th>
                 </tr>
                         </thead>

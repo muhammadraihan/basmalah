@@ -183,7 +183,7 @@ class KontenController extends Controller
     public function destroy($id)
     {
         $konten = Konten::uuid($id);
-        $photo = public_path('photo/').$hotel->photo;
+        $photo = public_path('photo/').$konten->photo;
         if(file_exists($photo)){
             unlink($photo);
         }

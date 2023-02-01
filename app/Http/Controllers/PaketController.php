@@ -186,8 +186,10 @@ class PaketController extends Controller
         $transport = Transport::all()->pluck('name', 'uuid');
         $hotel = Hotel::all()->pluck('name', 'uuid');
         $kategori = Kategori::all()->pluck('name', 'uuid');
-        $namapaket = NamaPaket::where('kategori', 'like', $kategori->uuid);
+        $uuid_kategori = Kategori::all();
         $paket = Paket::uuid($id);
+        $namapaket = NamaPaket::all()->pluck('name','uuid');
+        // dd($namapaket);
         return view('paket.edit',compact('transport', 'hotel', 'paket','kategori','namapaket'));
     }
 

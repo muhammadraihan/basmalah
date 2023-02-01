@@ -31,13 +31,6 @@
                     {!! Form::open(['route' => ['testimoni.update',$testimoni->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-4 mb-3">
-                        {{ Form::label('judul','Judul',['class' => 'required form-label'])}}
-                        {{ Form::text('judul',$testimoni->judul,['placeholder' => 'Judul','class' => 'form-control '.($errors->has('judul') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
-                        @if ($errors->has('judul'))
-                        <div class="invalid-feedback">{{ $errors->first('judul') }}</div>
-                        @endif
-                    </div>
-                    <div class="form-group col-md-4 mb-3">
                         {{ Form::label('nama_jemaah','Nama Jemaah',['class' => 'required form-label'])}}
                         {{ Form::text('nama_jemaah',$testimoni->nama_jemaah,['placeholder' => 'Nama Jemaah','class' => 'form-control '.($errors->has('nama_jemaah') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('nama_jemaah'))
@@ -66,14 +59,21 @@
                         @endif
                     </div>  
                     <div class="form-group col-md-4 mb-3">
-                        {{ Form::label('video','Video',['class' => 'required form-label'])}}
+                        {{ Form::label('judul','Komentar',['class' => 'required form-label'])}}
+                        {{ Form::textarea('judul',$testimoni->judul,['placeholder' => 'Komentar','class' => 'form-control '.($errors->has('judul') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        @if ($errors->has('judul'))
+                        <div class="invalid-feedback">{{ $errors->first('judul') }}</div>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-4 mb-3">
+                        {{ Form::label('video','Media',['class' => 'required form-label'])}}
                         <input type="hidden" name="oldImage" value="{{ $testimoni->video }}"> 
                         @if ($testimoni->video)
                             <img src="{{ asset('photo/' . $testimoni->video) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                         @else
                             <img class="img-preview img-fluid mb-5 col-sm-5">
                         @endif
-                        {{ Form::file('video',null,['placeholder' => 'Video','class' => 'form-control upload '.($errors->has('video') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'video'])}}
+                        {{ Form::file('video',null,['placeholder' => 'Media','class' => 'form-control upload '.($errors->has('video') ? 'is-invalid':''),'required', 'autocomplete' => 'off', 'id' => 'video'])}}
                         <img id="preview-image-before-upload" src="https://www.riobeauty.co.uk/images/product_image_not_found.gif"
                         alt="preview image" style="max-height: 250px;">
                         @if ($errors->has('video'))

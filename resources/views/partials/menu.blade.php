@@ -12,9 +12,21 @@
         </a>
     </li>
     <li>
-        <a href="{{route('hotel.index')}}" title="Hotel" data-filter-tags="hotel">
+        <a href="{{route('cabang.index')}}" title="Cabang" data-filter-tags="cabang">
             <i class="fal fa-building"></i>
+            <span class="nav-link-text">Cabang</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('hotel.index')}}" title="Hotel" data-filter-tags="hotel">
+            <i class="fal fa-procedures"></i>
             <span class="nav-link-text">Hotel</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{route('syarat.index')}}" title="syarat" data-filter-tags="syarat">
+            <i class="fal fa-procedures"></i>
+            <span class="nav-link-text">Syarat</span>
         </a>
     </li>
     <li>
@@ -89,6 +101,12 @@
                 <a href="{{route('kategori.index')}}" title="Kategori" data-filter-tags="kategori">
                     <i class="fal fa-exchange"></i>
                     <span class="nav-link-text">Kategori</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('kategori_syarat.index')}}" title="Kategori_syarat" data-filter-tags="kategori_syarat">
+                    <i class="fal fa-list"></i>
+                    <span class="nav-link-text">Kategori Syarat</span>
                 </a>
             </li>
             <li>

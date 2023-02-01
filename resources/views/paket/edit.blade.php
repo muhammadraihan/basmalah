@@ -51,9 +51,10 @@
                     </div>
                     <div class="form-group col-md-3 mb-3">
                         {{ Form::label('nama','Nama Paket',['class' => 'required form-label'])}}
-                        <select name="nama" id="nama" class="nama">
-
-                        </select>
+                        {!! Form::select('nama', $namapaket, $paket->nama, ['id' =>
+                        'nama','class' =>
+                        'nama form-control'.($errors->has('nama') ? 'is-invalid':''), 'required'
+                        => '', 'placeholder' => 'Pilih Nama Paket']) !!}
                          @if ($errors->has('nama'))
                         <div class="help-block text-danger">{{ $errors->first('nama') }}</div>
                         @endif

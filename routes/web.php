@@ -66,5 +66,8 @@ Route::group(['prefix' => 'backoffice', 'middleware' => ['auth']], function () {
     Route::resource('download', 'DownloadController');
     Route::resource('konten', 'KontenController');
     Route::resource('testimoni', 'TestimoniController');
+    Route::resource('cabang', 'CabangController');
+    Route::resource('syarat', 'SyaratController');
+    Route::resource('kategori_syarat', 'Kategori_syaratController');
     Route::get('namaPaket', 'PaketController@namaPaket')->name('get.namapaket');
 });
