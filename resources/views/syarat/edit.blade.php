@@ -37,7 +37,7 @@
                     @endif
                     {!! Form::open(['route' => ['syarat.update',$syarat->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
-                    <div class="form-group col-md-3 mb-3">
+                    <div class="form-group col-md-6 mb-3">
                         {{ Form::label('name','Kategori Syarat',['class' => 'required form-label'])}}
                         {!! Form::select('name', $kategori, $syarat->name, ['id' =>
                         'name','class' =>
@@ -47,9 +47,9 @@
                         @endif
                     </div>
                     <div id="box" class="form-row align-items-center panel-content">
-                        <div class="form-group col-md-4 mb-4">
+                        <div class="form-group col-md-15 mb-6">
                             {{ Form::label('detail','Syarat Detail',['class' => 'require form-label']) }}
-                            {{ Form::text('detail',$syarat->detail,['placeholder' => 'Syarat Detail','id' => 'detail[]','class' => 'form-control '.($errors->has('detail') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                            {{ Form::textarea('detail',$syarat->detail,['placeholder' => 'Syarat Detail','class' => 'detail form-control '.($errors->has('detail') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         </div>
                     </div>
                 <div
@@ -65,10 +65,11 @@
 
 @section('js')
 <script src="{{asset('js/formplugins/select2/select2.bundle.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
     $(document).ready(function(){
         $('.name').select2();
-
+        CKEDITOR.replace('detail');
         // var text ='';
         // var i;
 

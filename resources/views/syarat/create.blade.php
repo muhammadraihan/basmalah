@@ -39,15 +39,17 @@
                         @endif
                     </div>
                     <div id="box" class="form-row align-items-center panel-content">
-                        <div class="form-group col-md-4 mb-4">
+                        <div class="form-group col-md-15 mb-6">
                             {{ Form::label('detail','Syarat Detail',['class' => 'require form-label']) }}
-                            <input type="text" name="detail[]" id="detail[]" class="form-control" placeholder="Syarat Detail">
+                            {{-- <textarea name="desc" class="my-editor form-control" id="my-editor" cols="30" rows="10"></textarea> --}}
+                            {{ Form::textarea('detail',null,['placeholder' => 'Syarat Detail','class' => 'detail form-control '.($errors->has('detail') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                            {{-- <input type="text" name="detail[]" id="detail[]" class="form-control" placeholder="Syarat Detail"> --}}
                         </div>
-                        <div class="form-group col-sm-1 col-xl-1">
+                        {{-- <div class="form-group col-sm-1 col-xl-1">
                             <button id="addBox" class="btn btn-info" type="button btn-group">
                                 <i class="fal fa-plus"></i>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 <div
                     class="panel-content border-faded border-left-0 border-right-0 border-bottom-0 d-flex flex-row align-items-center">
@@ -63,9 +65,13 @@
 @section('js')
 <script src="{{asset('js/formplugins/select2/select2.bundle.js')}}"></script>
 <script src="{{asset('js/formplugins/dropzone/dropzone.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
     $(document).ready(function(){
         $('.name').select2();
+
+        CKEDITOR.replace('detail');
+
         $('#photo').change(function(){
             
             let reader = new FileReader();

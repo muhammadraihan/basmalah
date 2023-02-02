@@ -80,18 +80,19 @@ class SyaratController extends Controller
         
         $syarat = new Syarat();
         $syarat->name = $request->name;
-        $detail = $request->detail;
+        $syarat->detail = $request->detail;
+        $syarat->save();
         // dd($count);
-        if(count($detail) > 0){
-            foreach ($detail as $item => $value) {
-                $hasil = array(
-                    'name' => $syarat->name,
-                    'detail' => $detail[$item]
-                );
-                // dd($hasil);
-                Syarat::create($hasil);
-            }
-        }
+        // if(count($detail) > 0){
+        //     foreach ($detail as $item => $value) {
+        //         $hasil = array(
+        //             'name' => $syarat->name,
+        //             'detail' => $detail[$item]
+        //         );
+        //         // dd($hasil);
+        //         Syarat::create($hasil);
+        //     }
+        // }
 
         toastr()->success('New Syarat Added', 'Success');
         return redirect()->route('syarat.index');
