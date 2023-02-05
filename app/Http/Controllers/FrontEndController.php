@@ -12,7 +12,9 @@ use App\Models\Hotel;
 use App\Models\Kategori;
 use App\Models\Transport;
 use App\Models\Paket;
+use App\Models\Syarat;
 use App\Models\Youtube;
+use App\Models\Testimoni;
 
 
 class FrontendController extends Controller
@@ -24,24 +26,34 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        $about = About::all();
+        $about = About::all()->first();
         $brosur = Brosur::all();
         $home = Home::all();
         $hotel = Hotel::all();
         $transport = Transport::all();
         $paket = Paket::all();
-        $youtube = Youtube::all();
+        $youtube = Youtube::all()->first();
         $kategori = Kategori::all();
+        $testimoni = Testimoni::all();
 
-        return view('pages.home', compact('about', 'brosur', 'home', 'hotel', 'transport', 'paket', 'youtube', 'kategori'));
+        return view('pages.home', compact('about', 'brosur', 'home', 'hotel', 'transport',
+        'paket', 'youtube', 'kategori', 'testimoni'));
     }
 
     public function about()
     {
-        $about = About::all();
+        $about = About::all()->first();
         $kategori = Kategori::all();
 
         return view(('pages.about'), compact('about', 'kategori'));
+    }
+
+    public function syarat()
+    {
+        $syarat = Syarat::all();
+        $kategori = Kategori::all();
+
+        return view(('pages.syarat'), compact('syarat', 'kategori'));
     }
 
     public function contact()

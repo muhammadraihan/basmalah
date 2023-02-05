@@ -37,24 +37,16 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6">
-                    <div class="row gx-3 h-100">
-                        <div class="col-6 align-self-start wow fadeInUp" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about/1.jpeg">
-                        </div>
-                        <div class="col-6 align-self-end wow fadeInDown" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="img/about/2.avif">
+                    <div class="gx-3 h-100">
+                        <div class="align-self-start wow fadeInUp" data-wow-delay="0.1s">
+                            <img class="img-fluid" src="{{ asset('photo/' . $about->photo) }}">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <p class="fw-medium text-uppercase text-primary mb-2">Tentang Basmalah Travel</p>
                     <h1 class="display-5 mb-4">Agen Tur & Travel Umrah Terpercaya</h1>
-                    <p class="mb-4">Basmalah Berkah Mulia yang bertujuan untuk mencari keberkahan dengan mengantarkan
-                        tamu - tamu Allah yang Mulia ke Baitullah untuk melaksanakan Ibadah Haji dan Umrah.
-                    </p>
-                    <p class="mb-4">
-                        Kami menyediakan berbagai macam program dan paket Umrah serta Haji dengan memberikan pelayanan
-                        dan fasilitas yang terbaik serta harga yang kompetitif.
+                    <p class="mb-4">{{$about->keterangan}}
                     </p>
                     <div class="row pt-2">
                         <div class="col-sm-6 mb-4">
@@ -251,7 +243,6 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
-                    @foreach ($youtube as $item)
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="position-relative me-lg-4">
                         <img class="img-fluid w-100" src="/img/jenis_paket.jpeg" alt="">
@@ -259,18 +250,16 @@
                             class="position-absolute top-50 start-100 translate-middle bg-white rounded-circle d-none d-lg-block"
                             style="width: 120px; height: 120px;"></span>
                         <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="{{$item->link}}" data-bs-target="#videoModal">
+                            data-src="{{$youtube->link}}" data-bs-target="#videoModal">
                             <span></span>
                         </button>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="fw-medium text-uppercase text-primary mb-2">Keberangkatan Umrah</p>
-                    <h3 class="mb-4 text-capitalize">Keberangkatan Jamaah Umrah Tahun 2020</h3>
-                    <p class="mb-4"> 334 Jamaah Berangkat Ke Tanah Suci untuk melaksanakan ibadah Umrah. Semoga perjalanan Ibadah Umrah seluruh
-                        jamaah Basmalah senantiasa diberikan kemudahan, dan sekembalinya nanti mendapatkan keberkahan dan tawakal beribadah kepada Allah SWT. Aamiin.</p>
+                    <p class="fw-medium text-uppercase text-primary mb-2">MEDIA BASMALAH</p>
+                    <h3 class="mb-4 text-capitalize">{{$youtube->name}}</h3>
+                    <p class="mb-4">{{$youtube->keterangan}}</p>
                 </div>
-                    @endforeach
             </div>
         </div>
     </div>
@@ -286,17 +275,18 @@
                 <h1 class="display-5 mb-5">Jemaah Basmalah Berkata</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                @forelse ($testimoni as $item)
                 <div class="testimonial-item text-center">
                     <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab.png">
+                        <img class="img-fluid rounded-circle mx-auto mb-5" src="{{asset('photo/' . $item->video)}}">
                         <div class="btn-square bg-primary rounded-circle">
                             <i class="fa fa-quote-left text-white"></i>
                         </div>
                     </div>
                     <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Jemaah Umrah</span>
+                        <p>{{$item->judul}}</p>
+                        <h5 class="mb-1">{{$item->nama_jemaah}}, {{$item->umur}} tahun</h5>
+                        <span class="fst-italic">Jemaah {{$item->nama_paket}}, Keberangkatan {{$item->tanggal}}</span>
                         <div class="d-flex my-2 align-items-center justify-content-center">
                             <div class="mx-2">&#11088;</div>
                             <div class="mx-2">&#11088;</div>
@@ -306,7 +296,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-item text-center">
+                @empty
+                    <div class="col-12">
+                        Empty
+                    </div>
+                @endforelse
+                {{-- <div class="testimonial-item text-center">
                     <div class="testimonial-img position-relative">
                         <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab-2.png">
                         <div class="btn-square bg-primary rounded-circle">
@@ -365,7 +360,7 @@
                             <div class="mx-2">&#11088;</div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -385,8 +380,12 @@
             <div class="modal-body">
                 <!-- 16:9 aspect ratio -->
                 <div class="ratio ratio-16x9">
-                    <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
-                        allowscriptaccess="always" allow="autoplay"></iframe>
+                    <iframe class="embed-responsive-item" title="Media Basmalah" src="{{$youtube->link}}" id="video"
+                        allowscriptaccess="always"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                        gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>

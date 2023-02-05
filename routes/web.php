@@ -29,10 +29,10 @@ Route::group(['prefix' => '/'], function () {
     Route::get('gallery', 'FrontEndController@gallery', 'pages.gallery')->name('gallery');
     Route::get('download', 'FrontEndController@download', 'pages.download')->name('download');
     Route::view('about', 'FrontEndController', 'pages.about')->name('about');
+    Route::view('syarat', 'FronEndController'. 'pages.syarat')->name('syarat');
+    Route::get('/syarat', 'FrontEndController@syarat')->name('syarat');
     Route::get('/about', 'FrontEndController@about')->name('about');
-    // Route::view('umrah', 'FrontEndController', 'pages.umrah')->name('umrah');
     Route::get('/paket/{uuid}', 'FrontEndController@umrah')->name('paket');
-    // Route::view('haji', 'FrontEndController', 'pages.haji')->name('haji');
     Route::get('/haji', 'FrontEndController@haji')->name('haji');
 });
 

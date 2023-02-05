@@ -32,9 +32,14 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="{{ route('home') }}" class="nav-item nav-link {{ request()->is('/') ? 'active' : ''}}">Beranda</a>
-            <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : ''}}">Tentang Kami</a>
-            {{-- <a href="{{ route('haji') }}" class="nav-item nav-link {{ request()->is('paket') ? 'active' : ''}}">Pilihan Paket</a> --}}
-            {{-- <a href="{{ route('paket', $paket->uuid) }}" class="nav-item nav-link {{ request()->is('paket') ? 'active' : ''}}">Paket Haji</a> --}}
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tentang Kami</a>
+                <div class="dropdown-menu bg-light m-0">
+                    <a href="{{ route('about') }}" class="dropdown-item">Tentang Basmalah</a>
+                    <a href="{{ route('syarat') }}" class="dropdown-item">Syarat & Ketentuan</a>
+                </div>
+            </div>
+            {{-- <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->is('about') ? 'active' : ''}}">Tentang Kami</a> --}}
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pilihan Paket</a>
                 <div class="dropdown-menu bg-light m-0">
