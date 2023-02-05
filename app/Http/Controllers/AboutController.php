@@ -23,7 +23,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = About::all();
+        $about = About::all()->first();
         if (request()->ajax()) {
             $data = About::get();
 
@@ -44,7 +44,7 @@ class AboutController extends Controller
                 ->make(true);
         }
 
-        return view('about.index');
+        return view('about.index',compact('about'));
     }
 
     /**
@@ -127,8 +127,7 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'keterangan' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'keterangan' => 'required'
         ];
 
         $messages = [
@@ -173,7 +172,7 @@ class AboutController extends Controller
     public function destroy($id)
     {
         $about = About::uuid($id);
-        $photo = public_path('photo/').$hotel->photo;
+        $photo = public_path('photo/').$about->photo;
         if(file_exists($photo)){
             unlink($photo);
         }

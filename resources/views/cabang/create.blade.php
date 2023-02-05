@@ -27,6 +27,15 @@
                     <div class="panel-tag">
                         Form with <code>*</code> can not be empty.
                     </div>
+                    @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
                     {!! Form::open(['route' => 'cabang.store','id'=>'forms','method' => 'POST','class' =>
                     'needs-validation','dropzone', 'forms','novalidate','enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-4 mb-3">
