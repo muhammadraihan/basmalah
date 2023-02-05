@@ -81,7 +81,9 @@ class YoutubeController extends Controller
         $youtube = new Youtube();
         $youtube->name = $request->name;
         $youtube->keterangan = $request->keterangan;
-        $youtube->link = $request->link;
+        $link = $request->link;
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $match);
+        $youtube->link = $match[1];
         $youtube->save();
 
         toastr()->success('New Link Youtube Added', 'Success');

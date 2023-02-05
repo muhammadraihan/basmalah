@@ -37,7 +37,7 @@
   });
 
   // Modal Video
-  var $videoSrc;
+  var $videoSrc = document.getElementsByClassName("modal-body")[0];
   $(".btn-play").click(function () {
     $videoSrc = $(this).data("src");
   });
@@ -48,9 +48,17 @@
       $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0"
     );
   });
-  $("#videoModal").on("hide.bs.modal", function (e) {
-    $("#video").attr("src", $videoSrc);
+  $("#videoModal").on("hide.bs.modal", function () {
+    $('.modal-body').html('');
+    // document.getElementsByClassName("modal-body").paused;
+    // document.location.reload();
+    // $("#video").attr("src", $videoSrc);
+    //   $('.btn-close').click(function(){
+    //     $('#videoModal').empty();
+    // });
   });
+
+
 
   // Facts counter
   $('[data-toggle="counter-up"]').counterUp({
