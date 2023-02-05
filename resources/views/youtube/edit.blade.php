@@ -11,7 +11,7 @@
     <div class="col-xl-6">
         <div id="panel-1" class="panel">
             <div class="panel-hdr">
-            <h2>Edit <span class="fw-300"><i>{{$utube->name}}</i></span></h2>
+            <h2>Edit <span class="fw-300"><i>{{$youtube->name}}</i></span></h2>
                 <div class="panel-toolbar">
                     <a class="nav-link active" href="{{route('youtube.index')}}"><i class="fal fa-arrow-alt-left">
                         </i>
@@ -35,25 +35,25 @@
                                 </ul>
                             </div>
                     @endif
-                    {!! Form::open(['route' => ['youtube.update',$utube->uuid],'method' => 'PUT','class' =>
+                    {!! Form::open(['route' => ['youtube.update',$youtube->uuid],'method' => 'PUT','class' =>
                     'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) !!}
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('name','Nama Video',['class' => 'required form-label'])}}
-                        {{ Form::text('name',$utube->name,['placeholder' => 'Nama Video','class' => 'form-control '.($errors->has('name') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {{ Form::text('name',$youtube->name,['placeholder' => 'Nama Video','class' => 'form-control '.($errors->has('name') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('name'))
                         <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                         @endif
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('keterangan','Deskripsi',['class' => 'required form-label'])}}
-                        {{ Form::textarea('keterangan',$utube->keterangan,['placeholder' => 'Deskripsi','class' => 'form-control '.($errors->has('keterangan') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {{ Form::textarea('keterangan',$youtube->keterangan,['placeholder' => 'Deskripsi','class' => 'form-control '.($errors->has('keterangan') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('keterangan'))
                         <div class="invalid-feedback">{{ $errors->first('keterangan') }}</div>
                         @endif
                     </div>
                     <div class="form-group col-md-4 mb-3">
                         {{ Form::label('link','Link',['class' => 'required form-label'])}}
-                        {{ Form::textarea('link',$utube->link,['placeholder' => 'Link','class' => 'form-control '.($errors->has('link') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {{ Form::textarea('link', 'https://www.youtube.com/watch?v=' .$youtube->link,['placeholder' => 'Link','class' => 'form-control '.($errors->has('link') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('link'))
                         <div class="invalid-feedback">{{ $errors->first('link') }}</div>
                         @endif

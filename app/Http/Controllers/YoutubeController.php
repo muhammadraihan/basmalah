@@ -30,7 +30,7 @@ class YoutubeController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('link', function($row){
-                    return '<a href=' .$row->link. '> Cek Link disini !';
+                    return '<a href= https://www.youtube.com/watch?v='  .$row->link. '> Cek Link disini !';
                 })
                 ->addColumn('action', function ($row) {
                     return '
@@ -109,8 +109,8 @@ class YoutubeController extends Controller
      */
     public function edit($id)
     {
-        $utube = Youtube::uuid($id);
-        return view('youtube.edit',compact('utube'));
+        $youtube = Youtube::uuid($id);
+        return view('youtube.edit',compact('youtube'));
     }
 
     /**
@@ -136,11 +136,13 @@ class YoutubeController extends Controller
         $this->validate($request, $rules, $messages);
         // dd($request->photo);
 
-        $utube = Youtube::uuid($id);
-        $utube->name = $request->name;
-        $utube->keterangan = $request->keterangan;
-        $utube->link = $request->link;
-        $utube->save();
+        $youtube = Youtube::uuid($id);
+        $youtube->name = $request->name;
+        $youtube->keterangan = $request->keterangan;
+        $link = $request->link;
+        preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $link, $match);
+        $youtube->link = $match[1];
+        $youtube->save();
 
         toastr()->success('Link Youtube Edited', 'Success');
         return redirect()->route('youtube.index');
@@ -154,8 +156,8 @@ class YoutubeController extends Controller
      */
     public function destroy($id)
     {
-        $utube = Youtube::uuid($id);
-        $utube->delete();
+        $youtube = Youtube::uuid($id);
+        $youtube->delete();
 
         toastr()->success('Link Youtube Deleted', 'Success');
         return view('youtube.index');
