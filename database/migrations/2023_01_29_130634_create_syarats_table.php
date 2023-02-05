@@ -17,7 +17,7 @@ class CreateSyaratsTable extends Migration
             $table->id();
             $table->string('uuid')->unique();
             $table->string('name')->nullable();
-            $table->string('detail')->nullable();
+            $table->longText('detail')->nullable();
             $table->timestamps();
         });
     }
