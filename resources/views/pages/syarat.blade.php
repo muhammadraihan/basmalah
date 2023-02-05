@@ -25,10 +25,12 @@
     <div class="container-xxl py-5">
         <div class="container">
             <section class="syarat-ketentuan">
+                <div class="section-syarat">
+                    <div class="h1">Syarat & Ketentuan
+                    </div>
                 @forelse ($syarat as $item)
-                    <div class="section-syarat">
-                        <div class="h1">Syarat & Ketentuan {{$item->name}}</div>
-                        {{$item->detail}}
+                    <div class="h3">{{$item->kategoriSyarat->name}}</div>
+                        <div id="detail" name="detail"> {!! $item->detail !!}</div>
                     </div>
                 @empty
                     <div class="col-12">
