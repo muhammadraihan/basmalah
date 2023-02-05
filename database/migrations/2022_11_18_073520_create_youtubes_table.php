@@ -17,7 +17,7 @@ class CreateYoutubesTable extends Migration
             $table->id();
             $table->string('uuid')->unique();
             $table->string('name')->nullable();
-            $table->string('keterangan')->nuallable();
+            $table->longText('keterangan')->nuallable();
             $table->string('link')->nullable();
             $table->timestamps();
         });
