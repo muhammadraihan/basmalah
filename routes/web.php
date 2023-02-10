@@ -34,6 +34,7 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/about', 'FrontEndController@about')->name('about');
     Route::get('/paket/{uuid}', 'FrontEndController@umrah')->name('paket');
     Route::get('/haji', 'FrontEndController@haji')->name('haji');
+    Route::get('/detail/{uuid}', 'FrontEndController@detailPaket')->name('detail');
 });
 
 Auth::routes(['register' => false]);

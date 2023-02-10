@@ -71,16 +71,16 @@
                         <div class="invalid-feedback">{{ $errors->first('tanggal') }}</div>
                         @endif
                     </div>  
-                    <div class="form-group col-md-4 mb-3">
+                    <div class="form-group col-md-15 mb-6">
                         {{ Form::label('include','Include',['class' => 'required form-label'])}}
-                        {{ Form::textarea('include',null,['placeholder' => 'Include','class' => 'form-control '.($errors->has('include') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {{ Form::textarea('include',null,['placeholder' => 'Include','class' => 'include form-control '.($errors->has('include') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('include'))
                         <div class="invalid-feedback">{{ $errors->first('include') }}</div>
                         @endif
                     </div>
-                    <div class="form-group col-md-4 mb-3">
+                    <div class="form-group col-md-15 mb-6">
                         {{ Form::label('exclude','Exclude',['class' => 'required form-label'])}}
-                        {{ Form::textarea('exclude',null,['placeholder' => 'Exclude','class' => 'form-control '.($errors->has('exclude') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
+                        {{ Form::textarea('exclude',null,['placeholder' => 'Exclude','class' => 'exclude form-control '.($errors->has('exclude') ? 'is-invalid':''),'required', 'autocomplete' => 'off'])}}
                         @if ($errors->has('exclude'))
                         <div class="invalid-feedback">{{ $errors->first('exclude') }}</div>
                         @endif
@@ -149,6 +149,7 @@
 <script src="{{asset('js/formplugins/dropzone/dropzone.js')}}"></script>
 <script src="{{asset('js/formplugins/inputmask/inputmask.bundle.js')}}"></script>
 <script src="{{asset('js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
     $(document).ready(function(){
         $.ajaxSetup({
@@ -162,6 +163,9 @@
         $('.kategori').select2();
         $('.nama').select2();
         $(':input').inputmask();
+
+        CKEDITOR.replace('include');
+        CKEDITOR.replace('exclude');
 
         $('.tanggal').datepicker({
             orientation: "bottom left",

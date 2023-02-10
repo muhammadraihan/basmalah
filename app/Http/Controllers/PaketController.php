@@ -212,7 +212,6 @@ class PaketController extends Controller
             'hotel' => 'required',
             'tanggal' => 'required',
             'hari' => 'required',
-            'photo' => 'required',
             'detail' => 'required'
         ];
 
@@ -240,10 +239,20 @@ class PaketController extends Controller
         $paket->tanggal = $request->tanggal;
         $paket->hari = $request->hari;
         $paket->status = $request->status;
-        $paket->photo = $request->photo;
         $paket->detail = $request->detail;
         
-        if ($image = $request->file('photo')) {
+        if($request->hasFile('photo')){
+
+            // user intends to replace the current image for the category.  
+            // delete existing (if set)
+        
+            if($oldImage = $paket->photo) {
+        
+                unlink(public_path('photo/') . $oldImage);
+            }
+        
+            // save the new image
+            $image = $request->file('photo');
             $destinationPath = 'photo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
