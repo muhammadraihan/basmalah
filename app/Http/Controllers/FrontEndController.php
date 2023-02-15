@@ -56,11 +56,13 @@ class FrontendController extends Controller
         return view(('pages.syarat'), compact('syarat', 'kategori'));
     }
 
-    public function detailPaket()
+    public function detailPaket($id)
     {
         $paket = Paket::uuid($id);
+        $detilPaket = Paket::all();
+        $kategori = Kategori::all();
         
-        return view('pages.detail_paket',compact('paket'));
+        return view('pages.detail_paket',compact('paket', 'detilPaket', 'kategori'));
     }
 
     public function contact()

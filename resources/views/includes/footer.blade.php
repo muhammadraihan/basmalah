@@ -5,7 +5,7 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Kantor Basmalah</h5>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jakarta Indonesia</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>0813 5000 1996</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>contact@basmalahtravel.co.id</p>
                 <div class="d-flex pt-3">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
@@ -20,10 +20,8 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Quick Links</h5>
-                <a class="btn btn-link" href="">About Us</a>
-                <a class="btn btn-link" href="">Jenis Paket Ibadah</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
-                <a class="btn btn-link" href="">Support</a>
+                <a class="btn btn-link" href="{{route('about')}}">About Us</a>
+                <a class="btn btn-link" href="{{route('syarat')}}">Syarat & Ketentuan</a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Berlangganan</h5>

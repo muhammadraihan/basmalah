@@ -303,12 +303,8 @@ h6,
 }
 
 .page-header {
-  background: linear-gradient(
-      to right,
-      rgba(2, 36, 91, 1) 0%,
-      rgba(2, 36, 91, 0) 100%
-    ),
-    url(/public/img/page-header-basmalah.jpeg) center center no-repeat;
+  background: rgb(221,208,200);
+background: linear-gradient(90deg, rgba(221,208,200,1) 0%, rgba(255,247,242,1) 100%, rgba(0,212,255,1) 100%);
   background-size: cover;
 }
 

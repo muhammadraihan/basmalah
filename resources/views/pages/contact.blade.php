@@ -9,44 +9,30 @@
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 justify-content-center mb-5">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="bg-light text-center h-100 p-5">
                     <div class="btn-square bg-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
                         <i class="fa fa-phone-alt fa-2x text-primary"></i>
                     </div>
                     <h4 class="mb-3">Phone Number</h4>
-                    <p class="mb-2">+012 345 67890</p>
-                    <p class="mb-4">+012 345 67890</p>
-                    <a class="btn btn-primary px-4" href="tel:+0123456789">Call Now <i
+                    <p class="mb-2">+62 813 5000 1996</p>
+                    <a class="btn btn-primary px-4" href="https://wa.me/6281350001996">Hubungi Kami <i
                             class="fa fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="bg-light text-center h-100 p-5">
                     <div class="btn-square bg-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
                         <i class="fa fa-envelope-open fa-2x text-primary"></i>
                     </div>
                     <h4 class="mb-3">Email Address</h4>
-                    <p class="mb-2">info@example.com</p>
-                    <p class="mb-4">support@example.com</p>
-                    <a class="btn btn-primary px-4" href="mailto:info@example.com">Email Now <i
+                    <p class="mb-2">kontak@basmalahtravel.co.id</p>
+                    <a class="btn btn-primary px-4" href="mailto:kontak@basmalahtravel.co.id">Email<i
                             class="fa fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="bg-light text-center h-100 p-5">
-                    <div class="btn-square bg-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
-                        <i class="fa fa-map-marker-alt fa-2x text-primary"></i>
-                    </div>
-                    <h4 class="mb-3">Office Address</h4>
-                    <p class="mb-2">+012 345 67890</p>
-                    <p class="mb-4">+012 345 67890</p>
-                    <a class="btn btn-primary px-4" href="https://goo.gl/maps/FsznshxgnULBGgkN9"
-                        target="blank">Direction <i class="fa fa-arrow-right ms-2"></i></a>
-                </div>
-            </div>
         </div>
-        <div class="row mb-5">
+        {{-- <div class="row mb-5">
             <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
                 <iframe class="w-100"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
@@ -121,7 +107,7 @@
                 </form>
             </div>
         </div>
-    </div>
-</div>
+    </div>--}}
+</div> 
 <!-- Contact End -->    
 @endsection

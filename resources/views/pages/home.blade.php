@@ -85,7 +85,7 @@
         <div class="container">
             <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <p class="fw-medium text-uppercase text-primary mb-2">Pilihan Paket Untukmu</p>
-                <h1 class="display-5 mb-4">Mau Menunaikan Ibadah Apa?</h1>
+                <h1 class="display-5 mb-4">Mau Melakukan Perjalanan Kemana?</h1>
             </div>
             <div class="container">
                 <div class="row gy-5 gx-3">
@@ -142,7 +142,7 @@
                                 <p class="mt-3 h5">{{'Mulai Rp.'.' '.number_format($item->harga)}}</p>
                                 <p class="text-muted mt-3">{{$item->detail}}</p>
                                 <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                    <div class="btn btn-primary">Hubungi Kami<span class="fas fa-arrow-right"></span></div>
+                                    <a href="{{ route('detail', $item->uuid)}}" class="btn btn-primary">Lihat Detail<span class="fas fa-arrow-right"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                 <div class="col-12 col-md-3 mb-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                     <div class="card-akomodasi">
                         <div class="card">
-                            <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="...">
+                            <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="Akomodasi">
                             <div class="card-body">
                               <h5 class="card-title">{{$item->name}}</h5>
                               <p class="card-text">{{$item->location}}</p>
@@ -248,8 +248,8 @@
                                 allowscriptaccess="always"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media;
                                 gyroscope; picture-in-picture; web-share"
-                                width="600"
-                                height="300"
+                                width="500"
+                                height="500"
                                 allowfullscreen>
                             </iframe>
                         </div>
@@ -303,66 +303,6 @@
                         Empty
                     </div>
                 @endforelse
-                {{-- <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab-2.png">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Jemaah Umrah</span>
-                        <div class="d-flex my-2 align-items-center justify-content-center">
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaarboy-1.png">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Jemaah Umrah</span>
-                        <div class="d-flex my-2 align-items-center justify-content-center">
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="/img/avataaars-hijab-3.png">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Jemaah Umrah</span>
-                        <div class="d-flex my-2 align-items-center justify-content-center">
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                            <div class="mx-2">&#11088;</div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>

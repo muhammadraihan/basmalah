@@ -20,7 +20,7 @@
 <!-- Page Header End -->
 
 
-<!-- Features Start -->
+{{-- <!-- Features Start -->
 <div id="background-white">
     <div class="container-xxl py-5">
         <div class="container">
@@ -134,7 +134,7 @@
         </div>
     </div>
 </div>
-<!-- Video Modal End -->
+<!-- Video Modal End --> --}}
 
 
 <!-- About Start -->
@@ -181,7 +181,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <p class="mb-2">Telepon</p>
-                                    <p class="mb-0 kontak-desc">+012 345 6789</p>
+                                    <p class="mb-0 kontak-desc">0813 5000 1996</p>
                                 </div>
                             </div>
                         </div>
