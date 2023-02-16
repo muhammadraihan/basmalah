@@ -44,9 +44,8 @@
                             <p class="h3 mt-4">{{$item->NamaPaket->name}}</p>
                             <p class="h-1 mt-2 text-uppercase">{{$item->Kategori->name}}</p>
                             <p class="mt-3 h5">{{'Mulai Rp.'.' '.number_format($item->harga)}}</p>
-                            <p class="text-muted mt-3">{{$item->detail}}</p>
                             <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                <div class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></div>
+                                <a href="{{ route('detail', $item->uuid)}}" class="btn btn-primary">Lihat Detil<span class="fas fa-arrow-right"></span></a>
                             </div>
                         </div>
                     </div>
