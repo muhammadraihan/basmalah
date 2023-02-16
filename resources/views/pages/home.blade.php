@@ -39,7 +39,7 @@
                 <div class="col-lg-6">
                     <div class="gx-3 h-100">
                         <div class="align-self-start wow fadeInUp" data-wow-delay="0.1s">
-                            <img class="img-fluid" src="{{ asset('photo/' . $about->photo) }}">
+                            <img class="img-fluid" src="{{ asset('/photo/' . $about->photo) }}">
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 <div class="col-12 col-md-3 mb-4 wow fadeInUp" data-wow-delay="{{$incrementNumber += 100}}">
                     <div class="card-akomodasi">
                         <div class="card">
-                            <img src="{{ asset('photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="Akomodasi">
+                            <img src="{{ asset('/photo/' . $item->photo)}}" alt="hotel" class="card-img-top" alt="Akomodasi">
                             <div class="card-body">
                               <h5 class="card-title">{{$item->name}}</h5>
                               <p class="card-text">{{$item->location}}</p>
